@@ -17,3 +17,6 @@ desktop.ini
 npm-debug.log*
 .cache/
 tmp/
+
+.vercel
+.env*
