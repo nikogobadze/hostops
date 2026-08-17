@@ -87,11 +87,24 @@ costs almost nothing — while a stale asset paired with fresh HTML breaks the a
 
 ### Imagery
 
-The site ships **no photographs** — the no-external-assets rule is absolute. Every image is
-generated SVG in `assets/js/site/art.js`: gradient light, a sea horizon, and arch-framed views,
-in eight palettes. Rather than fake photography badly, the artwork commits to being
-illustration. Heroes use landscape-only compositions because a hero crops a 3:1 band out of a
-4:3 canvas, which would magnify any foreground prop.
+26 photographs, sourced through the **Openverse** and **Wikimedia Commons** public APIs and
+committed to `assets/img`. Batumi-specific shots — the seaside park, the boulevard, Makhuntseti
+falls, khachapuri, the botanical garden, a qvevri — come from Commons; generic interiors come
+from Openverse filtered to CC0 and public domain.
+
+Nothing is scraped. Results are scored against the query before being accepted, and the whole
+set was reviewed as a contact sheet, because a relevance score cannot tell you whether a
+photograph is any good. CC BY and CC BY-SA images carry a real attribution obligation, so every
+one is listed at **/credits**, linked from the footer.
+
+```bash
+npm run photos            # fetch anything missing
+node scripts/fetch-photos.mjs --force   # re-fetch everything
+```
+
+`Art.scene(key)` serves the photo when one exists and falls back to a **generated SVG scene**
+(`assets/js/site/art.js`) when it does not, so a missing file degrades quietly instead of
+leaving a hole.
 
 ---
 

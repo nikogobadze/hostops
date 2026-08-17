@@ -1075,3 +1075,38 @@ img, svg { display: block; max-width: 100%; }
 @media print {
   .topbar, .footer, .searchbar, .navtoggle, .scrollcue { display: none !important; }
 }
+
+/* ============================================================
+   .feature — alias of .editorial
+
+   The dining and hotel pages were written against .feature before
+   the redesign introduced .editorial. Rather than rewrite those
+   views, the two share one set of rules; .feature is simply the
+   older name for the same block.
+   ============================================================ */
+
+.feature {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  align-items: center;
+}
+.feature:nth-child(even) .feature__art { order: 2; }
+.feature__art {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--r-lg);
+}
+.feature__art .art { width: 100%; height: 100%; transition: transform 1.6s var(--slow); }
+.feature:hover .feature__art .art { transform: scale(1.05); }
+.feature__body { max-width: 46ch; }
+.feature__body .eyebrow { margin-bottom: var(--s-3); }
+.feature__body .h1 { margin-bottom: var(--s-3); }
+.feature__body .textlink { margin-top: var(--s-4); }
+.feature + .feature { margin-top: var(--band); }
+
+@media (max-width: 860px) {
+  .feature { grid-template-columns: 1fr; }
+  .feature:nth-child(even) .feature__art { order: 0; }
+  .feature__art { aspect-ratio: 4 / 3; }
+}
