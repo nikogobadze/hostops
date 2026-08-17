@@ -1,0 +1,188 @@
+/* ============================================================
+   HostOps — design tokens
+   Brand: coral (action / occupancy) + sky blue (information / flow)
+   Chart slots are validated for CVD + contrast in BOTH themes
+   (see README → "Chart palette"). Do not hand-edit series hexes.
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* ---- brand ramps ---- */
+  --coral-50:  #FFF3F0;
+  --coral-100: #FFE2DB;
+  --coral-200: #FFC7BB;
+  --coral-300: #FFA492;
+  --coral-400: #FB7D63;
+  --coral-500: #F0603F;   /* primary */
+  --coral-600: #D94A2B;
+  --coral-700: #B23A20;
+  --coral-800: #8A2D19;
+
+  --sky-50:  #ECF7FE;
+  --sky-100: #D5EEFC;
+  --sky-200: #AEDDF8;
+  --sky-300: #7CC7F1;
+  --sky-400: #45ACE4;
+  --sky-500: #1A8FD0;   /* secondary */
+  --sky-600: #1274AF;
+  --sky-700: #0E5C8C;
+  --sky-800: #0B4569;
+
+  /* ---- neutral ink (cool, slightly blue to sit with sky) ---- */
+  --ink-950: #08111A;
+  --ink-900: #0F1E2B;
+  --ink-800: #17293A;
+  --ink-700: #23394D;
+  --ink-600: #3C5568;
+  --ink-500: #5B7488;
+  --ink-400: #8298AA;
+  --ink-300: #AFC1CE;
+  --ink-200: #D3DFE8;
+  --ink-100: #E7EFF4;
+  --ink-50:  #F2F7FA;
+
+  /* ---- semantic surfaces ---- */
+  --bg:            #EEF4F8;
+  --surface:       #FFFFFF;
+  --surface-2:     #F7FAFC;
+  --surface-sunk:  #EDF3F7;
+  --surface-inv:   #0F1E2B;
+  --border:        #DFE9F0;
+  --border-strong: #C6D6E2;
+  --hairline:      rgba(15, 30, 43, 0.08);
+
+  --text:        #0F1E2B;
+  --text-2:      #43596C;
+  --text-muted:  #7690A3;
+  --text-inv:    #FFFFFF;
+
+  /* ---- status (reserved — never used as a series colour) ---- */
+  --ok:        #0E9E6E;
+  --ok-bg:     #E4F6EF;
+  --warn:      #B87503;
+  --warn-bg:   #FDF2DC;
+  --danger:    #D23B3B;
+  --danger-bg: #FCE9E9;
+  --info:      #1274AF;
+  --info-bg:   #E4F2FB;
+  --neutral-bg:#EAF0F5;
+
+  /* ---- chart slots (validated: light surface #FFFFFF) ---- */
+  --series-1: #1583C9;   /* sky      */
+  --series-2: #F2603F;   /* coral    */
+  --series-3: #12A594;   /* aqua     */
+  --series-4: #6B4FD8;   /* violet   */
+  --series-5: #D98B00;   /* amber — sub-3:1, always ships a direct label */
+  --chart-surface: #FFFFFF;
+  --grid:      #E8EFF4;
+  --axis:      #C6D6E2;
+  --chart-ink: #7690A3;
+
+  /* sequential ramp (sky, light → dark) for occupancy heat */
+  --seq-1: #E1F0FB;
+  --seq-2: #BFDFF6;
+  --seq-3: #93C9EE;
+  --seq-4: #5FADE1;
+  --seq-5: #2A8FCC;
+  --seq-6: #14669B;
+
+  /* ---- channel identity (fixed, brand-owned) ---- */
+  --ch-direct:  #0E9E6E;
+  --ch-booking: #1583C9;
+  --ch-airbnb:  #F2603F;
+
+  /* ---- elevation ---- */
+  --shadow-sm: 0 1px 2px rgba(15,30,43,.06), 0 1px 1px rgba(15,30,43,.04);
+  --shadow:    0 2px 4px rgba(15,30,43,.05), 0 6px 16px -6px rgba(15,30,43,.10);
+  --shadow-md: 0 4px 8px rgba(15,30,43,.06), 0 18px 34px -12px rgba(15,30,43,.16);
+  --shadow-lg: 0 10px 20px rgba(15,30,43,.08), 0 34px 60px -20px rgba(15,30,43,.24);
+  --ring:      0 0 0 3px rgba(26,143,208,.28);
+  --ring-coral:0 0 0 3px rgba(240,96,63,.26);
+
+  /* ---- geometry ---- */
+  --r-xs: 5px;
+  --r-sm: 8px;
+  --r:    11px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --r-pill: 999px;
+
+  --sidebar-w: 250px;
+  --topbar-h: 68px;
+
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+
+  --ease: cubic-bezier(.32,.72,.28,1);
+}
+
+/* ============================================================
+   Dark theme — steps chosen for the dark surface, not an
+   automatic flip of the light ones.
+
+   `data-theme` is always stamped on <html> (app.js seeds it from
+   prefers-color-scheme on first run, then from the saved choice),
+   so a single explicit scope covers both the OS default and the
+   in-app toggle.
+   ============================================================ */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:            #0A121A;
+  --surface:       #131C25;
+  --surface-2:     #182430;
+  --surface-sunk:  #0E1720;
+  --surface-inv:   #E7EFF4;
+  --border:        #24313E;
+  --border-strong: #334555;
+  --hairline:      rgba(255,255,255,.09);
+
+  --text:        #EDF3F7;
+  --text-2:      #B4C6D4;
+  --text-muted:  #7E93A5;
+  --text-inv:    #0F1E2B;
+
+  --ok:        #2CBB86;
+  --ok-bg:     #122C25;
+  --warn:      #E0A32B;
+  --warn-bg:   #2D2415;
+  --danger:    #EF6A6A;
+  --danger-bg: #301A1C;
+  --info:      #45ACE4;
+  --info-bg:   #102634;
+  --neutral-bg:#1C2833;
+
+  /* chart slots — validated: dark surface #131C25 */
+  --series-1: #2A8FCC;
+  --series-2: #E45E3F;
+  --series-3: #0E9C8B;
+  --series-4: #7C6BDD;
+  --series-5: #C08616;
+  --chart-surface: #131C25;
+  --grid:      #212E3A;
+  --axis:      #334555;
+  --chart-ink: #8FA5B6;
+
+  --seq-1: #16303F;
+  --seq-2: #1A4157;
+  --seq-3: #1D5679;
+  --seq-4: #206D9E;
+  --seq-5: #2A8FCC;
+  --seq-6: #58B0E4;
+
+  --ch-direct:  #2CBB86;
+  --ch-booking: #2A8FCC;
+  --ch-airbnb:  #E45E3F;
+
+  --coral-500: #EE6B4B;
+  --coral-600: #E0532F;
+  --sky-500:   #2A8FCC;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.5);
+  --shadow:    0 2px 6px rgba(0,0,0,.45), 0 8px 20px -8px rgba(0,0,0,.6);
+  --shadow-md: 0 6px 14px rgba(0,0,0,.45), 0 20px 40px -14px rgba(0,0,0,.7);
+  --shadow-lg: 0 12px 26px rgba(0,0,0,.5), 0 38px 70px -22px rgba(0,0,0,.8);
+  --ring:      0 0 0 3px rgba(69,172,228,.35);
+  --ring-coral:0 0 0 3px rgba(238,107,75,.32);
+}

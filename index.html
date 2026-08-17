@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HostOps — Hotel Management Dashboard</title>
+<meta name="description" content="Centralised operations panel for rooms, reservations, front desk, housekeeping, room service, mini bar and channel sync.">
+<link rel="stylesheet" href="assets/css/tokens.css?v=20260817a">
+<link rel="stylesheet" href="assets/css/app.css?v=20260817a">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23E8563C'/><path d='M9 23V9h3.4v5.3h7.2V9H23v14h-3.4v-5.6h-7.2V23z' fill='white'/></svg>">
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ───────────────────────── Sidebar ───────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="brandmark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="9"/><path d="M9.5 23V9h3.3v5.2h6.4V9h3.3v14h-3.3v-5.6h-6.4V23z"/></svg>
+      </div>
+      <div class="brandmark__text">
+        <strong>HostOps</strong>
+        <span id="brandProperty">Property</span>
+      </div>
+      <button class="sidebar__collapse" id="sidebarClose" title="Close menu" aria-label="Close menu" data-icon="x"></button>
+    </div>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <p class="nav__group">Operations</p>
+      <a class="nav__item" href="#/dashboard"><span data-icon="grid"></span>Overview</a>
+      <a class="nav__item" href="#/calendar"><span data-icon="calendar"></span>Availability<span class="nav__badge" id="navCalendar"></span></a>
+      <a class="nav__item" href="#/frontdesk"><span data-icon="key"></span>Front Desk<span class="nav__badge" id="navFrontdesk"></span></a>
+      <a class="nav__item" href="#/bookings"><span data-icon="book"></span>Reservations</a>
+
+      <p class="nav__group">Property</p>
+      <a class="nav__item" href="#/rooms"><span data-icon="door"></span>Rooms &amp; Types</a>
+      <a class="nav__item" href="#/housekeeping"><span data-icon="sparkle"></span>Housekeeping<span class="nav__badge" id="navHousekeeping"></span></a>
+
+      <p class="nav__group">Services</p>
+      <a class="nav__item" href="#/roomservice"><span data-icon="tray"></span>Room Service<span class="nav__badge" id="navRoomservice"></span></a>
+      <a class="nav__item" href="#/minibar"><span data-icon="bottle"></span>Mini Bar<span class="nav__badge" id="navMinibar"></span></a>
+      <a class="nav__item" href="#/services"><span data-icon="utensils"></span>Guest Services<span class="nav__badge" id="navServices"></span></a>
+
+      <p class="nav__group">Data</p>
+      <a class="nav__item" href="#/guests"><span data-icon="users"></span>Guests</a>
+      <a class="nav__item" href="#/channels"><span data-icon="link"></span>Channel Manager<span class="nav__badge" id="navChannels"></span></a>
+      <a class="nav__item" href="#/settings"><span data-icon="cog"></span>Settings</a>
+    </nav>
+
+    <div class="sidebar__foot">
+      <a class="btn btn--ghost-light btn--sm btn--block" href="site.html" target="_blank" rel="noopener"
+         style="margin-bottom:10px"><span data-icon="external"></span>View guest site</a>
+      <div class="syncbox" id="syncBox">
+        <div class="syncbox__head">
+          <span class="syncdot" id="syncDot"></span>
+          <span>Channel sync</span>
+        </div>
+        <p class="syncbox__meta" id="syncMeta">Not connected</p>
+        <button class="btn btn--ghost-light btn--sm btn--block" id="syncNow">Sync now</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar__scrim" id="sidebarScrim" hidden></div>
+
+  <!-- ───────────────────────── Main ───────────────────────── -->
+  <div class="main">
+    <header class="topbar">
+      <button class="iconbtn topbar__menu" id="sidebarOpen" aria-label="Open menu" data-icon="menu"></button>
+
+      <div class="topbar__title">
+        <h1 id="pageTitle">Overview</h1>
+        <p id="pageSub">—</p>
+      </div>
+
+      <div class="searchbox">
+        <span class="searchbox__icon" data-icon="search" aria-hidden="true"></span>
+        <input type="search" id="globalSearch" placeholder="Search guest, room, reservation…" autocomplete="off" aria-label="Search">
+        <div class="searchbox__results" id="searchResults" hidden></div>
+      </div>
+
+      <div class="topbar__actions">
+        <div class="businessdate" title="Business date">
+          <span data-icon="calendar" aria-hidden="true"></span>
+          <span id="businessDate">—</span>
+        </div>
+        <button class="iconbtn" id="themeToggle" aria-label="Toggle dark mode" data-icon="moon"></button>
+        <button class="btn btn--primary" id="quickBook"><span data-icon="plus"></span><span class="btn__label">New booking</span></button>
+        <div class="avatar" title="Administrator">AD</div>
+      </div>
+    </header>
+
+    <main class="view" id="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<div class="toaster" id="toaster" aria-live="polite"></div>
+<div class="modal-root" id="modalRoot"></div>
+
+<!-- core -->
+<script src="assets/js/core/utils.js?v=20260817a"></script>
+<script src="assets/js/core/icons.js?v=20260817a"></script>
+<script src="assets/js/core/offerings.js?v=20260817a"></script>
+<script src="assets/js/core/seed.js?v=20260817a"></script>
+<script src="assets/js/core/store.js?v=20260817a"></script>
+<script src="assets/js/core/ui.js?v=20260817a"></script>
+<script src="assets/js/core/charts.js?v=20260817a"></script>
+<script src="assets/js/core/domain.js?v=20260817a"></script>
+<!-- views -->
+<script src="assets/js/views/dashboard.js?v=20260817a"></script>
+<script src="assets/js/views/calendar.js?v=20260817a"></script>
+<script src="assets/js/views/frontdesk.js?v=20260817a"></script>
+<script src="assets/js/views/bookings.js?v=20260817a"></script>
+<script src="assets/js/views/rooms.js?v=20260817a"></script>
+<script src="assets/js/views/housekeeping.js?v=20260817a"></script>
+<script src="assets/js/views/roomservice.js?v=20260817a"></script>
+<script src="assets/js/views/minibar.js?v=20260817a"></script>
+<script src="assets/js/views/services.js?v=20260817a"></script>
+<script src="assets/js/views/guests.js?v=20260817a"></script>
+<script src="assets/js/views/channels.js?v=20260817a"></script>
+<script src="assets/js/views/settings.js?v=20260817a"></script>
+<!-- boot -->
+<script src="assets/js/app.js?v=20260817a"></script>
+</body>
+</html>

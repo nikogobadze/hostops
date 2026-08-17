@@ -1,0 +1,19 @@
+# dependencies (this project has none at runtime — but keep tooling out)
+node_modules/
+package-lock.json
+
+# vercel
+.vercel/
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# logs & scratch
+*.log
+npm-debug.log*
+.cache/
+tmp/
