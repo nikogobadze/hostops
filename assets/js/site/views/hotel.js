@@ -36,7 +36,7 @@
           '</div>' +
         '</section>' +
 
-        '<section class="section section--sand">' +
+        '<section class="section section--bone">' +
           '<div class="wrap">' +
             Parts.head({ eyebrow: 'Everything here', title: 'What is on the property', centre: true }) +
             '<div class="grid grid--3 reveal">' +
@@ -63,7 +63,7 @@
           '</div>' +
         '</section>' +
 
-        '<section class="section section--sand">' +
+        '<section class="section section--bone">' +
           '<div class="wrap wrap--narrow">' +
             Parts.head({ eyebrow: 'Questions', title: 'The things people ask' }) +
             '<div class="acc">' +
@@ -153,7 +153,7 @@
           '</div>' +
         '</section>' +
 
-        '<section class="section section--sand">' +
+        '<section class="section section--bone">' +
           '<div class="wrap wrap--narrow">' +
             Parts.head({ eyebrow: 'Concierge', title: 'Ask us for anything', centre: true }) +
             '<form id="askForm" class="panel" novalidate>' +

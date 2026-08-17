@@ -87,7 +87,7 @@
         '<div class="row">' +
           '<div><span class="price">' + Parts.money(e.price) + '</span> <small class="muted">per person</small></div>' +
           '<span class="spacer"></span>' +
-          '<button class="btn btn--sm btn--primary" data-bookexp="' + e.id + '">Book</button>' +
+          '<button class="btn btn--sm btn--primary" data-bookexp="' + e.id + '"><span>Book</span></button>' +
         '</div>' +
       '</div>' +
     '</article>';
@@ -162,8 +162,8 @@
           '</div>' +
         '</div>',
       footer: '<div id="expTotal"><span class="price">' + Parts.money(e.price) + '</span></div>' +
-        '<span class="spacer"></span><button class="btn" data-close>Close</button>' +
-        '<button class="btn btn--primary" id="exGo">Book places</button>'
+        '<span class="spacer"></span><button class="btn" data-close><span>Close</span></button>' +
+        '<button class="btn btn--primary" id="exGo"><span>Book places</span></button>'
     });
 
     const form = m.el.querySelector('#expForm');
@@ -237,7 +237,7 @@
             '<div class="linerow"><span>Meet at</span><b>' + U.esc(e.meeting) + '</b></div>' +
             '<div class="linerow"><span>Places</span><b>' + res.people + '</b></div>' +
             '<div class="linerow linerow--total"><span>Total</span><b>' + Parts.money(e.price * res.people) + '</b></div>',
-          footer: '<span class="spacer"></span><button class="btn btn--primary" data-close>Done</button>'
+          footer: '<span class="spacer"></span><button class="btn btn--primary" data-close><span>Done</span></button>'
         });
         UI.toast('Booked', e.name + ' · ' + U.fmtDate(res.date), 'ok');
       } catch (err) {

@@ -21,15 +21,18 @@
 
   /* ---------------- palettes ---------------- */
 
+  /* Tonal and desaturated on purpose. Luxury photography is atmosphere
+     before colour — light, haze and depth rather than saturation — so
+     each palette holds a narrow hue range and lets value do the work. */
   const P = {
-    dawn:    { sky: ['#FFEDE2', '#FFD6C4', '#F6B79C'], sea: ['#8FBBCB', '#3D7391'], sun: '#FFC5A6', land: '#C08A76', deep: '#2C5468', wall: '#F6E6D6' },
-    morning: { sky: ['#E2F2FA', '#BFE3F1', '#93CFE6'], sea: ['#5AA6C4', '#256E90'], sun: '#FFF6E2', land: '#7E9E8E', deep: '#1B5470', wall: '#EFE7DA' },
-    azure:   { sky: ['#D6EDF9', '#A2D9EF', '#6FC2E3'], sea: ['#3897BF', '#175E80'], sun: '#FFF8E6', land: '#6D9382', deep: '#10475F', wall: '#EDE6DB' },
-    gold:    { sky: ['#FFE7CC', '#FFC391', '#F5906A'], sea: ['#C2704F', '#4B3355'], sun: '#FFDCA6', land: '#8A5560', deep: '#3E2C4C', wall: '#F3DFCC' },
-    dusk:    { sky: ['#F7CDB8', '#D598A0', '#8A6A95'], sea: ['#5F5480', '#2E2C4C'], sun: '#FFC9A2', land: '#4A3D62', deep: '#221F3C', wall: '#EADCD6' },
-    verdant: { sky: ['#EDF7E7', '#D2EACC', '#A8D3A2'], sea: ['#6DA98A', '#3C755E'], sun: '#FFF8DC', land: '#4B7355', deep: '#294B39', wall: '#F0EEDC' },
-    stone:   { sky: ['#FCF3E7', '#F3E1CC', '#E2C6A6'], sea: ['#BC9E80', '#8B7057'], sun: '#FFF6E4', land: '#9A7A5D', deep: '#5B4430', wall: '#F7EADA' },
-    deepsea: { sky: ['#C7EAF2', '#87CFE0', '#48ABC7'], sea: ['#2A87A6', '#0F506B'], sun: '#EEFCFF', land: '#1D6A80', deep: '#083647', wall: '#E4EFEF' }
+    dawn:    { sky: ['#F6E9DE', '#EBD0C0', '#D9AE9B'], sea: ['#9AAFB4', '#4E6A74'], sun: '#F7D9C2', land: '#A88574', deep: '#3B5059', wall: '#F1E6D9' },
+    morning: { sky: ['#E9EFF1', '#D2E0E5', '#AFC7D0'], sea: ['#8AA7B2', '#4A6975'], sun: '#F7F3E9', land: '#8B9A92', deep: '#3A525C', wall: '#EDE7DC' },
+    azure:   { sky: ['#DFE9EC', '#BDD3DA', '#94B6C2'], sea: ['#6E96A4', '#37596A'], sun: '#F8F5EC', land: '#7A8E88', deep: '#2A4653', wall: '#EAE4D9' },
+    gold:    { sky: ['#F7E4CE', '#E9C09B', '#D2926F'], sea: ['#A8735A', '#4B3B44', '#2E262F'], sun: '#F8DCB6', land: '#8A6152', deep: '#33272E', wall: '#F0E2D0' },
+    dusk:    { sky: ['#EBCEC0', '#C29DA0', '#7C6B84'], sea: ['#5C5670', '#2B2A3A'], sun: '#F2CDB2', land: '#4E4557', deep: '#211F2C', wall: '#E8DCD4' },
+    verdant: { sky: ['#EDF0E4', '#D5DECB', '#B0C0A6'], sea: ['#7E9784', '#4A6154'], sun: '#F7F5E4', land: '#5E7361', deep: '#33443A', wall: '#EFEDDF' },
+    stone:   { sky: ['#F8F0E4', '#EBDCC7', '#D6C0A6'], sea: ['#B6A188', '#877560'], sun: '#F9F2E4', land: '#93806A', deep: '#584A3C', wall: '#F4E9D9' },
+    deepsea: { sky: ['#DCEAEC', '#B0CDD3', '#7FAAB5'], sea: ['#4C7E8B', '#20444F'], sun: '#EFF7F6', land: '#3C6A73', deep: '#16333A', wall: '#E5EBE8' }
   };
 
   /* ---------------- primitives ---------------- */

@@ -28,7 +28,7 @@
           '</div>' +
         '</section>' +
 
-        '<section class="section section--sand">' +
+        '<section class="section section--bone">' +
           '<div class="wrap wrap--narrow" style="text-align:center">' +
             Parts.head({
               eyebrow: 'Good to know', title: 'Eating with us', centre: true
@@ -87,7 +87,7 @@
         '<div class="row row--wrap">' +
           '<button class="btn btn--primary" data-booktable="' + r.id + '">' +
             '<span data-icon="utensils"></span>Reserve a table</button>' +
-          '<button class="btn" data-menu="' + r.id + '">See the menu</button>' +
+          '<button class="btn" data-menu="' + r.id + '"><span>See the menu</span></button>' +
           (openToday
             ? '<span class="tag tag--ok"><span data-icon="check"></span>Open today</span>'
             : '<span class="tag tag--warn">Closed today</span>') +
@@ -126,7 +126,7 @@
             '</div>' +
           '</div>' +
         '</div>',
-      footer: '<span class="spacer"></span><button class="btn" data-close>Close</button>' +
+      footer: '<span class="spacer"></span><button class="btn" data-close><span>Close</span></button>' +
         '<button class="btn btn--primary" id="toTable"><span data-icon="utensils"></span>Reserve a table</button>'
     }).el.querySelector('#toTable').addEventListener('click', function () {
       document.querySelector('.modal-scrim [data-close]').click();
@@ -196,8 +196,8 @@
           '</div>' +
         '</form>',
       footer: '<span class="small muted" id="tSummary"></span><span class="spacer"></span>' +
-        '<button class="btn" data-close>Cancel</button>' +
-        '<button class="btn btn--primary" id="tGo">Confirm table</button>'
+        '<button class="btn" data-close><span>Cancel</span></button>' +
+        '<button class="btn btn--primary" id="tGo"><span>Confirm table</span></button>'
     });
 
     const form = m.el.querySelector('#tblForm');
@@ -310,7 +310,7 @@
         (res.notes ? '<div class="linerow"><span>Note</span><b>' + U.esc(res.notes) + '</b></div>' : '') +
         '<p class="small muted" style="margin-top:1rem">Tables are held for 15 minutes. To change or cancel, call ' +
           U.esc(Store.state.hotel.phone) + '.</p>',
-      footer: '<span class="spacer"></span><button class="btn btn--primary" data-close>Done</button>'
+      footer: '<span class="spacer"></span><button class="btn btn--primary" data-close><span>Done</span></button>'
     });
     UI.toast('Table confirmed', r.name + ' · ' + U.fmtDate(res.date) + ' at ' + res.time, 'ok');
   }

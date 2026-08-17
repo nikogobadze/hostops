@@ -36,7 +36,7 @@
             icon: 'bed',
             title: 'Choose a room first',
             text: 'Pick the room you would like and we will bring you back here.',
-            action: '<a class="btn btn--primary" style="margin-top:1.2rem" href="#/rooms">See available rooms</a>'
+            action: '<a class="btn btn--primary" style="margin-top:1.2rem" href="#/rooms"><span>See available rooms</span></a>'
           }) + '</div></section>';
         return;
       }
@@ -51,7 +51,7 @@
             icon: 'alert',
             title: 'That room has just gone',
             text: 'Somebody booked the last ' + (type ? type.name : 'room') + ' for these dates while you were deciding. Here is what is still free.',
-            action: '<a class="btn btn--primary" style="margin-top:1.2rem" href="#/rooms">Back to rooms</a>'
+            action: '<a class="btn btn--primary" style="margin-top:1.2rem" href="#/rooms"><span>Back to rooms</span></a>'
           }) + '</div></section>';
         return;
       }
@@ -282,9 +282,9 @@
           (q.discount ? '<div class="linerow" style="color:var(--ok)"><span>Prepay discount</span><b>−' + Parts.money(q.discount) + '</b></div>' : '') +
           '<div class="linerow linerow--total"><span>Total</span><b>' + Parts.money(q.total) + '</b></div>' +
           '<p class="small muted" style="margin:.5rem 0 1rem">Includes VAT at ' + Store.state.hotel.taxRate + '%.</p>' +
-          '<button class="btn btn--primary btn--lg btn--block" id="coConfirm">' +
+          '<button class="btn btn--primary btn--lg btn--block" id="coConfirm"><span>' +
             (q.plan === 'prepaid' ? 'Pay ' + Parts.money(q.total) + ' & confirm' : 'Confirm booking') +
-          '</button>' +
+          '</span></button>' +
           '<p class="small muted" style="text-align:center;margin-top:.7rem">' +
             (q.plan === 'prepaid' ? 'Charged today · non-refundable' : 'Nothing charged now · free cancellation for 48h') + '</p>';
 
@@ -491,8 +491,8 @@
           '</div>' +
           '<div class="field"><label>Sitting</label><div class="slots" id="atSlots"></div></div>' +
         '</form>',
-      footer: '<span class="spacer"></span><button class="btn" data-close>Cancel</button>' +
-        '<button class="btn btn--primary" id="atGo">Add to booking</button>'
+      footer: '<span class="spacer"></span><button class="btn" data-close><span>Cancel</span></button>' +
+        '<button class="btn btn--primary" id="atGo"><span>Add to booking</span></button>'
     });
 
     const form = m.el.querySelector('#atForm');
@@ -570,8 +570,8 @@
           '</div>' +
           '<div class="field"><label>Time</label><div class="slots" id="asSlots"></div></div>' +
         '</form>',
-      footer: '<span class="spacer"></span><button class="btn" data-close>Cancel</button>' +
-        '<button class="btn btn--primary" id="asGo">Add to booking</button>'
+      footer: '<span class="spacer"></span><button class="btn" data-close><span>Cancel</span></button>' +
+        '<button class="btn btn--primary" id="asGo"><span>Add to booking</span></button>'
     });
 
     const form = m.el.querySelector('#asForm');
@@ -629,8 +629,8 @@
           '</div>' +
           '<div class="field"><label>Dates during your stay</label><div class="slots" id="aeDates"></div></div>' +
         '</form>',
-      footer: '<span class="spacer"></span><button class="btn" data-close>Cancel</button>' +
-        '<button class="btn btn--primary" id="aeGo">Add to booking</button>'
+      footer: '<span class="spacer"></span><button class="btn" data-close><span>Cancel</span></button>' +
+        '<button class="btn btn--primary" id="aeGo"><span>Add to booking</span></button>'
     });
 
     const form = m.el.querySelector('#aeForm');
@@ -689,7 +689,7 @@
           Parts.empty({
             icon: 'search', title: 'We cannot find that booking',
             text: 'Look it up with your reference and surname instead.',
-            action: '<a class="btn btn--primary" style="margin-top:1.2rem" href="#/booking">Find my booking</a>'
+            action: '<a class="btn btn--primary" style="margin-top:1.2rem" href="#/booking"><span>Find my booking</span></a>'
           }) + '</div></section>';
         return;
       }
@@ -774,8 +774,8 @@
 
             '<div class="row row--wrap" style="justify-content:center;gap:.6rem">' +
               '<button class="btn btn--ink" id="printIt"><span data-icon="printer"></span>Print this</button>' +
-              '<a class="btn" href="#/booking">Manage my booking</a>' +
-              '<a class="btn btn--ghost" href="#/">Back to the hotel</a>' +
+              '<a class="btn" href="#/booking"><span>Manage my booking</span></a>' +
+              '<a class="btn btn--ghost" href="#/"><span>Back to the hotel</span></a>' +
             '</div>' +
 
           '</div>' +

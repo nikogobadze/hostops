@@ -48,7 +48,7 @@
           '</div>' +
         '</section>' +
 
-        '<section class="section section--sand" id="treatments">' +
+        '<section class="section section--bone" id="treatments">' +
           '<div class="wrap">' +
             Parts.head({ eyebrow: 'Treatments', title: 'The menu', sub: 'Book ahead — we have ' + spa.roomsAvailable + ' rooms and they fill from four o\'clock onwards.' }) +
 
@@ -71,7 +71,7 @@
                     '<div class="row">' +
                       '<div><span class="price">' + Parts.money(t.price) + '</span></div>' +
                       '<span class="spacer"></span>' +
-                      '<button class="btn btn--sm btn--primary" data-booktreat="' + t.id + '">Book</button>' +
+                      '<button class="btn btn--sm btn--primary" data-booktreat="' + t.id + '"><span>Book</span></button>' +
                     '</div>' +
                   '</div>' +
                 '</article>').join('') +
@@ -143,8 +143,8 @@
           '</div>' +
         '</form>',
       footer: '<span class="small muted" id="spSummary"></span><span class="spacer"></span>' +
-        '<button class="btn" data-close>Cancel</button>' +
-        '<button class="btn btn--primary" id="spGo">Confirm · ' + Parts.money(t.price) + '</button>'
+        '<button class="btn" data-close><span>Cancel</span></button>' +
+        '<button class="btn btn--primary" id="spGo"><span>Confirm · ' + Parts.money(t.price) + '</span></button>'
     });
 
     const form = m.el.querySelector('#spaForm');
@@ -214,7 +214,7 @@
             '<div class="linerow linerow--total"><span>Charged</span><b>' + Parts.money(t.price) + '</b></div>' +
             '<p class="small muted" style="margin-top:.9rem">Added to your room account if you are staying with us, otherwise payable at the spa. ' +
             'Arrive fifteen minutes early.</p>',
-          footer: '<span class="spacer"></span><button class="btn btn--primary" data-close>Done</button>'
+          footer: '<span class="spacer"></span><button class="btn btn--primary" data-close><span>Done</span></button>'
         });
         UI.toast('Treatment booked', t.name + ' · ' + U.fmtDate(res.date) + ' at ' + res.time, 'ok');
       } catch (err) {

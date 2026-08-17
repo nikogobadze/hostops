@@ -72,12 +72,12 @@
                 icon: 'search',
                 title: 'Nothing matches those filters',
                 text: 'Try clearing a filter, or widening your dates.',
-                action: '<button class="btn btn--primary" style="margin-top:1.2rem" data-clear>Clear filters</button>'
+                action: '<button class="btn btn--primary" style="margin-top:1.2rem" data-clear><span>Clear filters</span></button>'
               })) +
           '</div>' +
         '</section>' +
 
-        '<section class="section section--sand">' +
+        '<section class="section section--bone">' +
           '<div class="wrap">' +
             Parts.head({ eyebrow: 'In every room', title: 'What you get, whichever you choose', centre: true }) +
             '<div class="grid grid--4 reveal">' +
@@ -167,48 +167,36 @@
 
     return '<article class="roomrow reveal" data-type="' + t.id + '">' +
       '<div class="roomrow__art">' +
-        Art.scene(t.art || 'room-standard', { scrim: 0.16, alt: t.name }) +
-        (scarce ? '<span class="card__badge card__badge--coral">Only ' + row.available + ' left</span>' : '') +
+        Art.scene(t.art || 'room-standard', { scrim: 0.14, alt: t.name }) +
+        (scarce ? '<span class="card__badge card__badge--bronze">Only ' + row.available + ' left</span>' : '') +
         (sold ? '<span class="card__badge">Sold out</span>' : '') +
       '</div>' +
 
       '<div class="roomrow__body">' +
-        '<div class="row row--wrap" style="gap:.5rem">' +
-          '<h3 class="h3">' + U.esc(t.name) + '</h3>' +
-          (/sea/i.test(t.view || '') ? '<span class="tag tag--sea"><span data-icon="wave"></span>Sea view</span>' : '') +
-        '</div>' +
+        '<span class="eyebrow eyebrow--stone">' + U.esc(t.view || '') + '</span>' +
+        '<h3 class="h1" style="font-size:clamp(1.7rem,3vw,2.4rem)">' + U.esc(t.name) + '</h3>' +
+        '<p class="lede">' + U.esc(t.blurb || '') + '</p>' +
         '<div class="card__meta">' +
-          '<span><span data-icon="users"></span>Sleeps ' + t.capacity + '</span>' +
-          '<span><span data-icon="ruler"></span>' + t.size + ' m²</span>' +
-          '<span><span data-icon="bed"></span>' + U.esc(t.beds) + '</span>' +
-          '<span><span data-icon="eye"></span>' + U.esc(t.view || '') + '</span>' +
+          '<span>Sleeps ' + t.capacity + '</span>' +
+          '<span>' + t.size + ' m&sup2;</span>' +
+          '<span>' + U.esc(t.beds) + '</span>' +
         '</div>' +
-        '<p class="small" style="color:var(--text-2)">' + U.esc(t.blurb || '') + '</p>' +
         '<div class="taglist">' +
           (t.amenities || []).slice(0, 5).map(a => '<span class="tag">' + U.esc(a) + '</span>').join('') +
-          ((t.amenities || []).length > 5 ? '<span class="tag">+' + (t.amenities.length - 5) + ' more</span>' : '') +
         '</div>' +
         (tooSmall
           ? '<p class="small" style="color:var(--warn)">Sleeps ' + t.capacity + ' — too small for ' + Parts.guestLabel(Site.search.guests) + '.</p>'
           : '') +
-      '</div>' +
 
-      '<div class="roomrow__buy">' +
-        '<div>' +
-          '<span class="price">' + Parts.money(row.nightly) + '</span> <small class="muted">per night</small>' +
-          '<div class="small muted tnum">' + Parts.money(row.total) + ' for ' + Parts.nightsLabel(nights) + '</div>' +
-        '</div>' +
-        (sold
-          ? '<span class="tag tag--warn">Not available</span>'
-          : tooSmall
-            ? '<span class="tag tag--warn">Too small</span>'
-            : '<span class="tag tag--ok"><span data-icon="check"></span>' + row.available + ' available</span>') +
-        '<div class="col" style="gap:.45rem;width:100%;align-items:stretch">' +
+        '<div class="roomrow__buy">' +
+          '<div>' +
+            '<span class="price">' + Parts.money(row.nightly) + '</span> <small>per night</small>' +
+            '<div class="small muted tnum" style="margin-top:.3rem">' + Parts.money(row.total) + ' for ' + Parts.nightsLabel(nights) + '</div>' +
+          '</div>' +
+          '<button class="btn btn--ghost btn--sm" data-detail="' + t.id + '"><span>Full details</span></button>' +
           '<button class="btn btn--primary" data-book="' + t.id + '"' + (sold || tooSmall ? ' disabled' : '') + '>' +
-            (sold ? 'Sold out' : 'Book this room') + '</button>' +
-          '<button class="btn btn--ghost btn--sm" data-detail="' + t.id + '">Full details</button>' +
+            '<span>' + (sold ? 'Sold out' : 'Reserve') + '</span></button>' +
         '</div>' +
-        '<span class="small muted">Free cancellation · pay at the hotel</span>' +
       '</div>' +
     '</article>';
   }
@@ -262,10 +250,10 @@
       footer:
         '<div><span class="price">' + Parts.money(row.nightly) + '</span> <small class="muted">per night</small></div>' +
         '<span class="spacer"></span>' +
-        '<button class="btn" data-close>Close</button>' +
+        '<button class="btn" data-close><span>Close</span></button>' +
         '<button class="btn btn--primary" id="bookIt"' +
-          (row.available === 0 || !row.fits ? ' disabled' : '') + '>' +
-          (row.available === 0 ? 'Sold out for these dates' : 'Book this room') + '</button>'
+          (row.available === 0 || !row.fits ? ' disabled' : '') + '><span>' +
+          (row.available === 0 ? 'Sold out for these dates' : 'Book this room') + '</span></button>'
     });
 
     const go = m.el.querySelector('#bookIt');

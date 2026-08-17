@@ -23,8 +23,9 @@
   /* ---------------- the booking search bar ---------------- */
 
   /**
-   * The single most important control on the site — kept identical
-   * everywhere so a guest never has to re-learn it.
+   * The single most important control on the site. The reference sites
+   * all bury booking behind a small "Reserve" link; this stays on the
+   * first screen and is identical everywhere it appears.
    */
   Parts.searchbar = function (opts) {
     const o = opts || {};
@@ -48,13 +49,11 @@
             n + ' guest' + (n === 1 ? '' : 's') + '</option>').join('') +
         '</select>' +
       '</div>' +
-      '<button class="btn btn--primary btn--lg" type="submit">' +
-        '<span data-icon="search"></span>' + U.esc(o.label || 'Check availability') +
-      '</button>' +
+      '<button class="btn" type="submit"><span>' + U.esc(o.label || 'Check availability') + '</span></button>' +
     '</form>' +
     (o.summary === false ? '' :
       '<p class="searchbar__summary">' +
-        U.esc(U.fmtDate(s.checkIn) + ' → ' + U.fmtDate(s.checkOut)) + ' · ' +
+        U.esc(U.fmtDate(s.checkIn) + ' — ' + U.fmtDate(s.checkOut)) + ' · ' +
         Parts.nightsLabel(Site.nights()) + ' · ' + Parts.guestLabel(s.guests) +
       '</p>');
   };
@@ -89,14 +88,18 @@
 
   /* ---------------- hero ---------------- */
 
+  /**
+   * Full-viewport and image-led. Direct children of the inner wrap are
+   * animated in sequence by CSS, so they must stay siblings.
+   */
   Parts.hero = function (o) {
     return '<header class="hero' + (o.compact ? ' hero--compact' : '') + '" data-hero>' +
-      '<div class="hero__art">' + Art.scene(o.art || 'hero', { scrim: o.scrim === undefined ? 0.42 : o.scrim, alt: o.alt }) + '</div>' +
+      '<div class="hero__art">' + Art.scene(o.art || 'hero', { scrim: o.scrim === undefined ? 0.5 : o.scrim, alt: o.alt }) + '</div>' +
       '<div class="hero__inner"><div class="wrap">' +
         (o.eyebrow ? '<span class="eyebrow eyebrow--light">' + U.esc(o.eyebrow) + '</span>' : '') +
         '<h1 class="display">' + U.esc(o.title) + '</h1>' +
         (o.sub ? '<p class="lede">' + U.esc(o.sub) + '</p>' : '') +
-        (o.search ? Parts.searchbar({ variant: 'hero', summary: false }) : '') +
+        (o.search ? Parts.searchbar({ variant: 'hero' }) : '') +
         (o.cta || '') +
       '</div></div>' +
       (o.cue ? '<div class="scrollcue"><span></span>Scroll</div>' : '') +
@@ -108,38 +111,71 @@
   Parts.head = function (o) {
     return '<div class="section__head' + (o.centre ? ' section__head--centre' : '') + '">' +
       (o.eyebrow ? '<span class="eyebrow">' + U.esc(o.eyebrow) + '</span>' : '') +
-      '<h2 class="' + (o.level === 1 ? 'h1' : 'h1') + '">' + U.esc(o.title) + '</h2>' +
+      '<h2 class="h1">' + U.esc(o.title) + '</h2>' +
       (o.sub ? '<p class="lede">' + U.esc(o.sub) + '</p>' : '') +
     '</div>';
   };
 
+  /* ---------------- editorial block ---------------- */
+
+  /** Image one side, a short column of type the other. Alternate with `reverse`. */
+  Parts.editorial = function (o) {
+    const paras = (o.body || '').split('|').filter(Boolean)
+      .map(p => '<p class="lede" style="margin-bottom:1rem">' + U.esc(p) + '</p>').join('');
+
+    return '<article class="editorial reveal' + (o.reverse ? ' editorial--reverse' : '') + '" ' +
+      (o.attr || '') + '>' +
+      '<div class="editorial__art">' + Art.scene(o.art, { scrim: 0.12, alt: o.alt || o.title }) + '</div>' +
+      '<div class="editorial__body">' +
+        (o.eyebrow ? '<span class="eyebrow">' + U.esc(o.eyebrow) + '</span>' : '') +
+        '<h2 class="h1">' + U.esc(o.title) + '</h2>' +
+        paras +
+        (o.extra || '') +
+        (o.action ? '<a class="textlink" href="' + U.esc(o.href || '#') + '">' +
+          U.esc(o.action) + '<span data-icon="arrow-right"></span></a>' : '') +
+      '</div>' +
+    '</article>';
+  };
+
+  /* ---------------- full-bleed plate ---------------- */
+
+  /** One line of type over a full-width image, used to pace the page. */
+  Parts.plate = function (o) {
+    return '<section class="plate">' +
+      '<div class="plate__art">' + Art.scene(o.art, { scrim: o.scrim === undefined ? 0.52 : o.scrim, alt: o.alt || '' }) + '</div>' +
+      '<div class="plate__body">' +
+        (o.eyebrow ? '<span class="eyebrow eyebrow--light">' + U.esc(o.eyebrow) + '</span>' : '') +
+        '<p class="statement">' + U.esc(o.text) + '</p>' +
+        (o.action ? '<a class="btn btn--light" href="' + U.esc(o.href || '#') + '"><span>' +
+          U.esc(o.action) + '</span></a>' : '') +
+      '</div>' +
+    '</section>';
+  };
+
   /* ---------------- room pieces ---------------- */
 
-  /** Marketing card, used on the home page. */
   Parts.roomCard = function (type) {
-    const from = D_rateFrom(type);
+    const from = rateFrom(type);
     return '<article class="card card--hover" data-roomtype="' + type.id + '">' +
-      '<div class="card__media">' + Art.scene(type.art || 'room-standard', { scrim: 0.18, alt: type.name }) +
-        '<span class="card__badge">' + U.esc(type.view || '') + '</span>' +
-      '</div>' +
+      '<div class="card__media">' + Art.scene(type.art || 'room-standard', { scrim: 0.16, alt: type.name }) + '</div>' +
       '<div class="card__body">' +
+        '<span class="eyebrow eyebrow--stone">' + U.esc(type.view || '') + '</span>' +
         '<h3 class="h3">' + U.esc(type.name) + '</h3>' +
         '<div class="card__meta">' +
-          '<span><span data-icon="users"></span>' + type.capacity + '</span>' +
-          '<span><span data-icon="ruler"></span>' + type.size + ' m²</span>' +
-          '<span><span data-icon="bed"></span>' + U.esc(type.beds) + '</span>' +
+          '<span>' + type.capacity + ' guests</span>' +
+          '<span>' + type.size + ' m&sup2;</span>' +
+          '<span>' + U.esc(type.beds) + '</span>' +
         '</div>' +
-        '<p class="small muted">' + U.esc(U.truncate(type.blurb || '', 120)) + '</p>' +
         '<div class="row">' +
-          '<div><span class="price">' + Parts.money(from) + '</span> <small class="muted">per night</small></div>' +
+          '<div><span class="price">' + Parts.money(from) + '</span> <small>per night</small></div>' +
           '<span class="spacer"></span>' +
-          '<span class="textlink">View<span data-icon="arrow-right"></span></span>' +
+          '<span class="textlink">Discover<span data-icon="arrow-right"></span></span>' +
         '</div>' +
       '</div>' +
     '</article>';
   };
 
-  function D_rateFrom(type) {
+  function rateFrom(type) {
     const s = Site.search;
     return Domain.quote(type.id, s.checkIn, s.checkOut) || type.basePrice;
   }
@@ -149,18 +185,18 @@
   Parts.offerCard = function (o) {
     return '<article class="card card--hover" ' + (o.attr || '') + '>' +
       '<div class="card__media' + (o.wide ? ' card__media--wide' : '') + '">' +
-        Art.scene(o.art, { scrim: 0.2, alt: o.title }) +
+        Art.scene(o.art, { scrim: 0.18, alt: o.title }) +
         (o.badge ? '<span class="card__badge ' + (o.badgeClass || '') + '">' + U.esc(o.badge) + '</span>' : '') +
       '</div>' +
       '<div class="card__body">' +
-        (o.eyebrow ? '<span class="eyebrow">' + U.esc(o.eyebrow) + '</span>' : '') +
+        (o.eyebrow ? '<span class="eyebrow eyebrow--stone">' + U.esc(o.eyebrow) + '</span>' : '') +
         '<h3 class="h3">' + U.esc(o.title) + '</h3>' +
         (o.meta ? '<div class="card__meta">' + o.meta + '</div>' : '') +
         (o.text ? '<p class="small muted">' + U.esc(o.text) + '</p>' : '') +
         '<div class="row">' +
           (o.price !== undefined
             ? '<div><span class="price">' + Parts.money(o.price) + '</span>' +
-              (o.priceNote ? ' <small class="muted">' + U.esc(o.priceNote) + '</small>' : '') + '</div>'
+              (o.priceNote ? ' <small>' + U.esc(o.priceNote) + '</small>' : '') + '</div>'
             : '') +
           '<span class="spacer"></span>' +
           '<span class="textlink">' + U.esc(o.action || 'View') + '<span data-icon="arrow-right"></span></span>' +
@@ -200,7 +236,8 @@
           '</ul></div>' +
         '</div>' +
         '<div class="footer__base">' +
-          '<span>© ' + new Date().getFullYear() + ' ' + U.esc(h.name) + '. Every rate shown includes VAT.</span>' +
+          '<span>&copy; ' + new Date().getFullYear() + ' ' + U.esc(h.name) + '</span>' +
+          '<span>All rates include VAT</span>' +
           '<span class="spacer"></span>' +
           '<a href="index.html" title="Staff only">Staff sign in</a>' +
         '</div>' +
@@ -222,9 +259,9 @@
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.04 });
     nodes.forEach((n, i) => {
-      n.style.transitionDelay = Math.min(i % 4, 3) * 70 + 'ms';
+      n.style.transitionDelay = Math.min(i % 3, 2) * 110 + 'ms';
       io.observe(n);
     });
   };
@@ -247,7 +284,7 @@
 
   Parts.empty = function (o) {
     return '<div class="emptystate">' +
-      '<span data-icon="' + (o.icon || 'info') + '" style="font-size:1.9rem;color:var(--sand-400)"></span>' +
+      '<span data-icon="' + (o.icon || 'info') + '" style="color:var(--stone-pale)"></span>' +
       '<h3 class="h3">' + U.esc(o.title) + '</h3>' +
       (o.text ? '<p>' + U.esc(o.text) + '</p>' : '') +
       (o.action || '') +

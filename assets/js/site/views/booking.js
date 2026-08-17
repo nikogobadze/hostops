@@ -76,7 +76,7 @@
               daysAway === 1 ? 'See you tomorrow' : daysAway + ' days to go') + '</h1>' +
         '</div>' +
         '<span class="spacer"></span>' +
-        '<button class="btn btn--ghost btn--sm" data-forget>Not you? Search again</button>' +
+        '<button class="btn btn--ghost btn--sm" data-forget><span>Not you? Search again</span></button>' +
       '</div>' +
 
       (b.status === 'cancelled'
@@ -141,7 +141,7 @@
             '<a class="btn" href="mailto:' + U.esc(Store.state.hotel.email) + '?subject=' + encodeURIComponent('Booking ' + b.ref) + '">' +
               '<span data-icon="mail"></span>Email us</a>' +
             '<span class="spacer"></span>' +
-            (cancellable ? '<button class="btn btn--ghost" data-cancel="' + b.id + '">Cancel booking</button>' : '') +
+            (cancellable ? '<button class="btn btn--ghost" data-cancel="' + b.id + '"><span>Cancel booking</span></button>' : '') +
           '</div>' +
         '</div>');
   }
@@ -169,7 +169,7 @@
       '<span data-icon="' + icon + '"></span>' +
       '<div style="flex:1"><strong style="font-size:.94rem;color:var(--text)">' + U.esc(title) + '</strong>' +
       '<div class="small muted">' + U.esc(detail) + '</div></div>' +
-      '<button class="btn btn--ghost btn--sm" data-cancelsvc="' + kind + '|' + r.id + '">Cancel</button>' +
+      '<button class="btn btn--ghost btn--sm" data-cancelsvc="' + kind + '|' + r.id + '"><span>Cancel</span></button>' +
       '</div>';
   }
 
