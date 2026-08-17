@@ -15,6 +15,7 @@ window.PHOTOS = [
   "hero-rooms",
   "hero-spa",
   "hike",
+  "market",
   "pool",
   "room-deluxe",
   "room-family",

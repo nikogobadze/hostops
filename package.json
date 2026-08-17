@@ -12,11 +12,14 @@
     "db:check": "node scripts/db-check.mjs",
     "db:migrate": "node scripts/migrate.mjs",
     "db:seed": "node scripts/seed.mjs",
-    "db:reset": "node scripts/migrate.mjs --drop && node scripts/seed.mjs"
+    "db:reset": "node scripts/migrate.mjs --drop && node scripts/seed.mjs",
+    "photos": "node scripts/fetch-photos.mjs"
   },
   "dependencies": {
-    "@libsql/client": "^0.15.15",
-    "sharp": "^0.35.3"
+    "@libsql/client": "^0.15.15"
   },
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
 }
