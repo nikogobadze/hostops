@@ -108,9 +108,9 @@
         Parts.hero({
           art: 'hero-contact', compact: true, scrim: 0.46,
           eyebrow: 'Finding us',
-          title: 'Passeig del Mar 42',
-          sub: 'Ninety minutes from Barcelona, forty from Girona, and six from Blanes station — where we will come and get you.',
-          alt: 'The coastal path leading to the hotel'
+          title: 'Sherif Khimshiashvili St 17',
+          sub: 'Fifteen minutes from Batumi airport, two hours from Kutaisi, and ten from the station — where we will come and get you.',
+          alt: 'The Adjaran mountains behind the town'
         }) +
 
         '<section class="section">' +
@@ -133,7 +133,7 @@
               '<div class="reveal">' +
                 '<div class="panel">' +
                   '<div style="aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;margin-bottom:1.2rem">' +
-                    Art.scene('market', { scrim: 0.1, alt: 'Blanes old town' }) + '</div>' +
+                    Art.scene('market', { scrim: 0.1, alt: 'Batumi old town at dusk' }) + '</div>' +
                   '<h3 class="h3" style="margin-bottom:.6rem">' + U.esc(h.name) + '</h3>' +
                   '<p style="color:var(--text-2);margin-bottom:1rem">' + U.esc(loc.address) + '</p>' +
                   '<div class="linerow"><span>Reception</span><b>Open 24 hours</b></div>' +

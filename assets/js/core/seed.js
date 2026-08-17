@@ -6,22 +6,23 @@
 (function (global) {
   'use strict';
 
-  const FIRST = ['Emma', 'Liam', 'Sofia', 'Noah', 'Elena', 'Lucas', 'Marta', 'Hugo', 'Anna', 'Mateo',
-    'Chiara', 'Felix', 'Ines', 'Jonas', 'Clara', 'Tomas', 'Nora', 'Viktor', 'Alice', 'Sander',
-    'Yuki', 'Rahul', 'Amara', 'Diego', 'Freya', 'Omar', 'Lina', 'Pieter', 'Sara', 'Gabriel',
-    'Maja', 'Andres', 'Isabel', 'Kwame', 'Julia', 'Marco', 'Ayla', 'Henrik', 'Rosa', 'Daniel',
-    'Camille', 'Stefan', 'Priya', 'Lars', 'Bianca', 'Ivan', 'Talia', 'Ruben', 'Greta', 'Milan'];
+  const FIRST = ['Nino', 'Giorgi', 'Mariam', 'Luka', 'Tamar', 'Saba', 'Ana', 'Nika', 'Elene', 'Davit',
+    'Ketevan', 'Irakli', 'Salome', 'Levan', 'Natia', 'Zurab', 'Lika', 'Beka', 'Sopio', 'Vakhtang',
+    'Ayşe', 'Mehmet', 'Elif', 'Emre', 'Zeynep', 'Arman', 'Anahit', 'Narek', 'Leyla', 'Orkhan',
+    'Olena', 'Dmytro', 'Yulia', 'Kacper', 'Zofia', 'Noa', 'Yonatan', 'Hannah', 'Piet', 'Lukas',
+    'Marta', 'Andreas', 'Sara', 'Thomas', 'Freya', 'Omar', 'Aisha', 'Daniyar', 'Amira', 'Viktor'];
 
-  const LAST = ['Bergström', 'Novak', 'Rossi', 'Fernández', 'Kowalski', 'Ahmed', 'Dubois', 'Silva',
-    'Müller', 'Jansen', 'Okafor', 'Lindqvist', 'Moretti', 'Costa', 'Haddad', 'Petrov', 'Nakamura',
-    'Weber', 'Álvarez', 'O\'Brien', 'Sørensen', 'Bakker', 'Marchetti', 'Halvorsen', 'Duarte',
-    'Krause', 'Ferreira', 'Vasquez', 'Larsen', 'Brandt', 'Iversen', 'Moreau', 'Kaur', 'Schmitt',
-    'Delgado', 'Andersson', 'Riva', 'Voss', 'Blanco', 'Nilsen'];
+  const LAST = ['Beridze', 'Gogoladze', 'Kapanadze', 'Abashidze', 'Tsiklauri', 'Nakashidze',
+    'Dolidze', 'Chkheidze', 'Maisuradze', 'Kvaratskhelia', 'Gelashvili', 'Bolkvadze',
+    'Jincharadze', 'Khalvashi', 'Shengelia', 'Tavdgiridze', 'Yılmaz', 'Demir', 'Kaya',
+    'Petrosyan', 'Sargsyan', 'Aliyev', 'Mammadov', 'Kovalenko', 'Bondarenko', 'Nowak',
+    'Kowalski', 'Levi', 'Cohen', 'Müller', 'Weber', 'Jansen', 'Bakker', 'Novak',
+    'Petrov', 'Ivanov', 'Nurlanov', 'Haddad', 'Okafor', 'Andersson'];
 
-  const COUNTRIES = ['DE', 'FR', 'IT', 'ES', 'NL', 'SE', 'GB', 'US', 'PL', 'DK', 'NO', 'PT', 'BE', 'CH', 'AT', 'IE', 'CZ', 'JP'];
+  const COUNTRIES = ['GE', 'TR', 'AM', 'AZ', 'IL', 'UA', 'PL', 'DE', 'GB', 'RU', 'KZ', 'BY', 'LT', 'FR', 'IT', 'US', 'SA', 'IR'];
 
-  const HK_STAFF = ['Marisol Vega', 'Dario Petrov', 'Anouk Meijer', 'Teodora Ilić', 'Samir Haddad'];
-  const FB_STAFF = ['Nico Bassi', 'Elise Fontaine', 'Ravi Menon'];
+  const HK_STAFF = ['Marina Bolkvadze', 'Teona Dolidze', 'Rusudan Khalvashi', 'Gia Nakashidze', 'Eka Shengelia'];
+  const FB_STAFF = ['Levan Jincharadze', 'Nino Beridze', 'Sandro Tavdgiridze'];
 
   const AMENITY_POOL = ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Nespresso', 'Safe', 'Rain shower',
     'Balcony', 'Sea view', 'Bathtub', 'Desk', 'Blackout blinds', 'Sofa bed'];
@@ -31,12 +32,12 @@
   function buildRoomTypes() {
     const copy = global.Offerings ? Offerings.roomCopy() : {};
     return attachCopy([
-      { id: 'rt_std', code: 'STD', name: 'Standard Double', basePrice: 118, capacity: 2, beds: '1 double', size: 22, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Safe', 'Desk'] },
-      { id: 'rt_twn', code: 'TWN', name: 'Superior Twin', basePrice: 134, capacity: 2, beds: '2 singles', size: 26, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Safe', 'Rain shower', 'Desk'] },
-      { id: 'rt_dlx', code: 'DLX', name: 'Deluxe King', basePrice: 172, capacity: 2, beds: '1 king', size: 32, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Nespresso', 'Safe', 'Rain shower', 'Balcony'] },
-      { id: 'rt_jrs', code: 'JRS', name: 'Junior Suite', basePrice: 236, capacity: 3, beds: '1 king + sofa bed', size: 44, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Nespresso', 'Safe', 'Bathtub', 'Balcony', 'Sofa bed'] },
-      { id: 'rt_fam', code: 'FAM', name: 'Family Room', basePrice: 205, capacity: 4, beds: '1 double + 2 singles', size: 40, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Safe', 'Bathtub', 'Sofa bed'] },
-      { id: 'rt_pen', code: 'PEN', name: 'Penthouse Suite', basePrice: 415, capacity: 4, beds: '1 king + 1 double', size: 78, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Nespresso', 'Safe', 'Bathtub', 'Rain shower', 'Balcony', 'Sea view'] }
+      { id: 'rt_std', code: 'STD', name: 'Standard Double', basePrice: 240, capacity: 2, beds: '1 double', size: 22, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Safe', 'Desk'] },
+      { id: 'rt_twn', code: 'TWN', name: 'Superior Twin', basePrice: 290, capacity: 2, beds: '2 singles', size: 26, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Safe', 'Rain shower', 'Desk'] },
+      { id: 'rt_dlx', code: 'DLX', name: 'Deluxe King', basePrice: 390, capacity: 2, beds: '1 king', size: 32, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Nespresso', 'Safe', 'Rain shower', 'Balcony'] },
+      { id: 'rt_jrs', code: 'JRS', name: 'Junior Suite', basePrice: 520, capacity: 3, beds: '1 king + sofa bed', size: 44, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Nespresso', 'Safe', 'Bathtub', 'Balcony', 'Sofa bed'] },
+      { id: 'rt_fam', code: 'FAM', name: 'Family Room', basePrice: 470, capacity: 4, beds: '1 double + 2 singles', size: 40, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Safe', 'Bathtub', 'Sofa bed'] },
+      { id: 'rt_pen', code: 'PEN', name: 'Penthouse Suite', basePrice: 890, capacity: 4, beds: '1 king + 1 double', size: 78, amenities: ['Wi-Fi', 'Air conditioning', 'Smart TV', 'Nespresso', 'Safe', 'Bathtub', 'Rain shower', 'Balcony', 'Sea view'] }
     ], copy);
 
     /** Fold the guest-facing blurb, artwork key and highlights onto each type. */
@@ -108,13 +109,13 @@
         lastName: last,
         email: (first + '.' + last).toLowerCase().normalize('NFD').replace(/[̀-ͯ']/g, '') +
           '@' + U.pick(rnd, ['mailbox.com', 'proton.me', 'gmail.com', 'outlook.com', 'fastmail.com']),
-        phone: '+' + U.pickInt(rnd, 30, 49) + ' ' + U.pickInt(rnd, 600, 799) + ' ' + U.pickInt(rnd, 100000, 999999),
+        phone: '+995 ' + U.pickInt(rnd, 500, 599) + ' ' + U.pickInt(rnd, 100000, 999999),
         country: country,
         vip: rnd() < 0.08,
         docType: U.pick(rnd, ['Passport', 'ID card', 'Driving licence']),
         docId: U.pick(rnd, ['P', 'ID', 'DL']) + U.pickInt(rnd, 1000000, 9999999),
         notes: '',
-        prefs: rnd() < 0.25 ? U.pick(rnd, ['High floor', 'Quiet room', 'Late check-out if possible', 'Extra pillows', 'Allergy: feathers', 'Vegetarian breakfast']) : '',
+        prefs: rnd() < 0.25 ? U.pick(rnd, ['High floor', 'Sea-facing if possible', 'Quiet room away from the boulevard', 'Late check-out if possible', 'Extra pillows', 'Allergy: walnuts', 'Vegetarian breakfast']) : '',
         marketingOptIn: rnd() < 0.4,
         createdAt: new Date(Date.now() - U.pickInt(rnd, 5, 900) * 86400000).toISOString()
       });
@@ -200,7 +201,7 @@
             : channel === 'airbnb' ? 'HM' + U.pick(rnd, ['A', 'B', 'C', 'D', 'E']) + U.pickInt(rnd, 10000, 99999)
               : null,
           breakfast: rnd() < 0.45,
-          notes: rnd() < 0.15 ? U.pick(rnd, ['Late arrival ~23:00', 'Honeymoon — sparkling on arrival', 'Requests high floor', 'Travelling with a small dog', 'Early check-in requested']) : '',
+          notes: rnd() < 0.15 ? U.pick(rnd, ['Late arrival ~23:00', 'Honeymoon — sparkling on arrival', 'Requests sea view', 'Travelling with a small dog', 'Early check-in requested', 'Arriving on the night train from Tbilisi']) : '',
           paymentStatus: status === 'checked_out' ? 'paid'
             : status === 'in_house' ? (rnd() < 0.5 ? 'deposit' : 'guaranteed')
               : (rnd() < 0.35 ? 'prepaid' : 'guaranteed'),
@@ -218,37 +219,39 @@
 
   function buildMenu() {
     return [
-      { id: 'm_1', name: 'Continental breakfast', category: 'Breakfast', price: 19, prepMins: 20, active: true },
-      { id: 'm_2', name: 'Full English breakfast', category: 'Breakfast', price: 24, prepMins: 25, active: true },
-      { id: 'm_3', name: 'Greek yoghurt & granola', category: 'Breakfast', price: 11, prepMins: 10, active: true },
-      { id: 'm_4', name: 'Club sandwich & fries', category: 'All day', price: 21, prepMins: 22, active: true },
-      { id: 'm_5', name: 'Caesar salad', category: 'All day', price: 18, prepMins: 15, active: true },
-      { id: 'm_6', name: 'Margherita pizza', category: 'All day', price: 17, prepMins: 20, active: true },
-      { id: 'm_7', name: 'Beef burger & fries', category: 'All day', price: 26, prepMins: 25, active: true },
-      { id: 'm_8', name: 'Tomato soup', category: 'All day', price: 12, prepMins: 12, active: true },
-      { id: 'm_9', name: 'Espresso', category: 'Drinks', price: 4, prepMins: 5, active: true },
-      { id: 'm_10', name: 'Pot of tea', category: 'Drinks', price: 6, prepMins: 8, active: true },
-      { id: 'm_11', name: 'Glass of house red', category: 'Drinks', price: 9, prepMins: 6, active: true },
-      { id: 'm_12', name: 'Bottle of Prosecco', category: 'Drinks', price: 38, prepMins: 10, active: true },
-      { id: 'm_13', name: 'Fresh orange juice', category: 'Drinks', price: 7, prepMins: 6, active: true },
-      { id: 'm_14', name: 'Chocolate fondant', category: 'Desserts', price: 13, prepMins: 18, active: true },
-      { id: 'm_15', name: 'Cheese board', category: 'Desserts', price: 22, prepMins: 12, active: true },
-      { id: 'm_16', name: 'Seasonal fruit plate', category: 'Desserts', price: 10, prepMins: 10, active: true }
+      { id: 'm_1', name: 'Georgian breakfast — nadughi, honey, shotis puri', category: 'Breakfast', price: 52, prepMins: 20, active: true },
+      { id: 'm_2', name: 'Eggs, sulguni and tomato', category: 'Breakfast', price: 38, prepMins: 18, active: true },
+      { id: 'm_3', name: 'Matsoni with walnuts and honey', category: 'Breakfast', price: 26, prepMins: 10, active: true },
+      { id: 'm_4', name: 'Acharuli khachapuri', category: 'All day', price: 34, prepMins: 25, active: true },
+      { id: 'm_5', name: 'Khinkali, beef and pork · five', category: 'All day', price: 24, prepMins: 22, active: true },
+      { id: 'm_6', name: 'Pkhali plate — spinach, beetroot, walnut', category: 'All day', price: 26, prepMins: 15, active: true },
+      { id: 'm_7', name: 'Mtsvadi, pork skewer, tkemali', category: 'All day', price: 46, prepMins: 28, active: true },
+      { id: 'm_8', name: 'Chikhirtma, chicken and egg soup', category: 'All day', price: 22, prepMins: 15, active: true },
+      { id: 'm_9', name: 'Badrijani nigvzit', category: 'All day', price: 22, prepMins: 14, active: true },
+      { id: 'm_10', name: 'Turkish coffee', category: 'Drinks', price: 9, prepMins: 6, active: true },
+      { id: 'm_11', name: 'Pot of mountain tea', category: 'Drinks', price: 12, prepMins: 8, active: true },
+      { id: 'm_12', name: 'Glass of saperavi', category: 'Drinks', price: 18, prepMins: 5, active: true },
+      { id: 'm_13', name: 'Bottle of Georgian sparkling', category: 'Drinks', price: 85, prepMins: 10, active: true },
+      { id: 'm_14', name: 'Fresh pomegranate juice', category: 'Drinks', price: 16, prepMins: 6, active: true },
+      { id: 'm_15', name: 'Churchkhela, three pieces', category: 'Desserts', price: 18, prepMins: 5, active: true },
+      { id: 'm_16', name: 'Pelamushi with walnuts', category: 'Desserts', price: 22, prepMins: 12, active: true },
+      { id: 'm_17', name: 'Sulguni and guda cheese board', category: 'Desserts', price: 48, prepMins: 12, active: true },
+      { id: 'm_18', name: 'Seasonal fruit plate', category: 'Desserts', price: 24, prepMins: 10, active: true }
     ];
   }
 
   function buildMinibarItems() {
     return [
-      { id: 'mb_1', name: 'Still water 500ml', price: 3.5, par: 2, cost: 0.6 },
-      { id: 'mb_2', name: 'Sparkling water 500ml', price: 3.5, par: 2, cost: 0.6 },
-      { id: 'mb_3', name: 'Coca-Cola 330ml', price: 4, par: 2, cost: 0.8 },
-      { id: 'mb_4', name: 'Local craft beer', price: 6.5, par: 2, cost: 1.9 },
-      { id: 'mb_5', name: 'Prosecco 200ml', price: 14, par: 1, cost: 4.5 },
-      { id: 'mb_6', name: 'Pringles Original', price: 5, par: 1, cost: 1.4 },
-      { id: 'mb_7', name: 'Toblerone 50g', price: 4.5, par: 2, cost: 1.2 },
-      { id: 'mb_8', name: 'Salted cashews', price: 6, par: 1, cost: 1.8 },
-      { id: 'mb_9', name: 'Espresso pod', price: 2.5, par: 4, cost: 0.4 },
-      { id: 'mb_10', name: 'Orange juice 250ml', price: 4.5, par: 1, cost: 1.1 }
+      { id: 'mb_1', name: 'Borjomi 500ml', price: 8, par: 2, cost: 1.8 },
+      { id: 'mb_2', name: 'Nabeghlavi 500ml', price: 7, par: 2, cost: 1.5 },
+      { id: 'mb_3', name: 'Still water 500ml', price: 6, par: 2, cost: 1.2 },
+      { id: 'mb_4', name: 'Natakhtari lager', price: 14, par: 2, cost: 4.2 },
+      { id: 'mb_5', name: 'Saperavi 187ml', price: 32, par: 1, cost: 11 },
+      { id: 'mb_6', name: 'Village chacha 50ml', price: 26, par: 1, cost: 8 },
+      { id: 'mb_7', name: 'Churchkhela', price: 12, par: 2, cost: 3.5 },
+      { id: 'mb_8', name: 'Salted hazelnuts', price: 14, par: 1, cost: 4 },
+      { id: 'mb_9', name: 'Espresso pod', price: 6, par: 4, cost: 1 },
+      { id: 'mb_10', name: 'Pomegranate juice 250ml', price: 11, par: 1, cost: 3 }
     ];
   }
 
@@ -303,7 +306,7 @@
         assignee: U.pick(rnd, HK_STAFF),
         status: status,
         priority: departingToday && rnd() < 0.35 ? 'high' : 'normal',
-        notes: rnd() < 0.14 ? U.pick(rnd, ['Guest requested extra towels', 'Stain on carpet — report', 'Mini bar needs full restock', 'Check A/C filter']) : '',
+        notes: rnd() < 0.14 ? U.pick(rnd, ['Guest requested extra towels', 'Stain on carpet — report', 'Mini bar needs full restock', 'Check A/C filter', 'Balcony door sticking']) : '',
         minutes: departingToday ? U.pickInt(rnd, 35, 55) : U.pickInt(rnd, 15, 25),
         startedAt: null,
         completedAt: null
@@ -548,7 +551,7 @@
             date: date,
             time: U.pick(rnd, r.slots),
             party: Math.max(1, b.adults + (rnd() < 0.4 ? b.children : 0)),
-            notes: rnd() < 0.2 ? U.pick(rnd, ['Window table if possible', 'One vegetarian', 'Celebrating an anniversary', 'Nut allergy']) : '',
+            notes: rnd() < 0.2 ? U.pick(rnd, ['Sea-facing table if possible', 'One vegetarian', 'Celebrating an anniversary', 'Walnut allergy']) : '',
             status: 'confirmed',
             source: 'guest',
             createdAt: new Date(Date.now() - U.pickInt(rnd, 1, 300) * 60000).toISOString()
@@ -605,19 +608,19 @@
     const today = U.today();
 
     const hotel = {
-      name: 'Casa Marea',
-      tagline: 'Boutique seafront hotel',
-      address: 'Passeig del Mar 42, 17300 Blanes, Spain',
-      email: 'front.desk@casamarea.example',
-      phone: '+34 972 550 118',
-      currency: 'EUR',
-      taxRate: 10,
-      cityTax: 2.2,
+      name: 'Magnolia House',
+      tagline: 'Boutique seafront hotel · Batumi',
+      address: 'Sherif Khimshiashvili St 17, Batumi 6010, Adjara, Georgia',
+      email: 'reception@magnoliahouse.example',
+      phone: '+995 422 27 44 10',
+      currency: 'GEL',
+      taxRate: 18,          // Georgian VAT
+      cityTax: 0,           // Georgia levies no per-guest city tax
       checkInTime: '15:00',
       checkOutTime: '11:00',
-      breakfastPrice: 16,
+      breakfastPrice: 45,
       totalFloors: 4,
-      logoInitials: 'CM'
+      logoInitials: 'MH'
     };
 
     const roomTypes = buildRoomTypes();

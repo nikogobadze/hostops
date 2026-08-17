@@ -1,5 +1,5 @@
 /* ============================================================
-   Casa Marea — generated scenery
+   Magnolia House — generated scenery
 
    The site ships no photographs: a strict no-external-assets rule
    means every image here is drawn as SVG. Rather than fake photos,

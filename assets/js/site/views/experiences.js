@@ -21,7 +21,7 @@
           eyebrow: 'Out there',
           title: 'The coast, properly',
           sub: 'Small groups, our own people, and things you would struggle to arrange yourself. Residents and visitors both welcome.',
-          alt: 'A sailing boat at sunset off the Costa Brava'
+          alt: 'A sailing boat at sunset off the the Black Sea coast'
         }) +
 
         '<section class="section">' +
@@ -151,7 +151,7 @@
                 '</select>' +
               '</div>' +
               '<div class="field" style="margin-bottom:1rem"><label for="exName">Name</label>' +
-                '<input class="input" id="exName" name="guestName" placeholder="Elena Moretti" value="' + U.esc(p.guestName || '') + '">' +
+                '<input class="input" id="exName" name="guestName" placeholder="Nino Beridze" value="' + U.esc(p.guestName || '') + '">' +
                 '<span class="err" data-err-for="guestName" hidden></span></div>' +
               '<div class="field" style="margin-bottom:1rem"><label for="exEmail">Email</label>' +
                 '<input class="input" type="email" id="exEmail" name="email" placeholder="you@example.com" value="' + U.esc(p.email || '') + '">' +

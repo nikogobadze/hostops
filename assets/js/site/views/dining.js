@@ -35,9 +35,9 @@
             }) +
             '<div class="grid grid--3" style="text-align:left">' +
               [
-                { i: 'clock', t: 'Book ahead in summer', d: 'Marea fills a week out from June to September. We hold a few tables for residents each night.' },
+                { i: 'clock', t: 'Book ahead in summer', d: 'Zghva fills a week out from June to September. We hold a few tables for residents each night.' },
                 { i: 'heart', t: 'Tell us anything', d: 'Allergies, a birthday, a proposal, a fussy six-year-old. Put it in the notes and we will handle it.' },
-                { i: 'utensils', t: 'Children and dogs', d: 'Both welcome at La Terrassa and Sal. Under-sixes eat free from the children’s menu.' }
+                { i: 'utensils', t: 'Children and dogs', d: 'Both welcome at Magnolia Terrace and Sal. Under-sixes eat free from the children’s menu.' }
               ].map(x =>
                 '<div class="amenity" style="border-top:0"><span data-icon="' + x.i + '"></span>' +
                 '<div><strong>' + U.esc(x.t) + '</strong><span>' + U.esc(x.d) + '</span></div></div>').join('') +
@@ -176,14 +176,14 @@
           '<div class="formgrid">' +
             '<div class="field span2" style="grid-column:1/-1">' +
               '<label for="tName">Name the table is under</label>' +
-              '<input class="input" id="tName" name="guestName" placeholder="Elena Moretti" value="' + U.esc(p.guestName || '') + '">' +
+              '<input class="input" id="tName" name="guestName" placeholder="Nino Beridze" value="' + U.esc(p.guestName || '') + '">' +
               '<span class="err" data-err-for="guestName" hidden></span>' +
             '</div>' +
             '<div class="field"><label for="tEmail">Email</label>' +
               '<input class="input" type="email" id="tEmail" name="email" placeholder="you@example.com" value="' + U.esc(p.email || '') + '">' +
               '<span class="err" data-err-for="email" hidden></span></div>' +
             '<div class="field"><label for="tPhone">Phone</label>' +
-              '<input class="input" id="tPhone" name="phone" placeholder="+34 600 000 000" value="' + U.esc(p.phone || '') + '"></div>' +
+              '<input class="input" id="tPhone" name="phone" placeholder="+995 555 12 34 56" value="' + U.esc(p.phone || '') + '"></div>' +
             '<div class="field span2" style="grid-column:1/-1">' +
               '<label for="tNotes">Anything we should know?</label>' +
               '<input class="input" id="tNotes" name="notes" placeholder="Allergies, a birthday, a window table…">' +

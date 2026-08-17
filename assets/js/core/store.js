@@ -6,7 +6,7 @@
 (function (global) {
   'use strict';
 
-  const KEY = 'hostops:v1';
+  const KEY = 'hostops:v2';
   const listeners = new Set();
 
   const Store = {

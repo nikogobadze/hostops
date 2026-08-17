@@ -85,7 +85,7 @@
                 { i: 'wifi', t: 'Fast Wi-Fi', d: 'Free throughout, and it reaches the balcony' },
                 { i: 'snow', t: 'Air conditioning', d: 'Individually controlled, silent at night' },
                 { i: 'coffee', t: 'Breakfast option', d: 'Add it for ' + Parts.money(Store.state.hotel.breakfastPrice) + ' per adult per night' },
-                { i: 'paw', t: 'Dogs welcome', d: '€25 per stay, bed and bowls provided' },
+                { i: 'paw', t: 'Dogs welcome', d: '₾70 per stay, bed and bowls provided' },
                 { i: 'shield', t: 'Free cancellation', d: 'Until 48 hours before you arrive' },
                 { i: 'key', t: '24-hour reception', d: 'Arrive at any hour, someone is up' },
                 { i: 'wave', t: 'Beach and pool', d: 'Towels, loungers and service included' },

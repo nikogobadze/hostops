@@ -1,12 +1,12 @@
 /* ============================================================
-   Casa Marea — public site shell and router
+   Magnolia House — public site shell and router
    ============================================================ */
 (function (global) {
   'use strict';
 
   const Pages = global.Pages || (global.Pages = {});
   const Site = {};
-  const SEARCH_KEY = 'casamarea:search';
+  const SEARCH_KEY = 'magnoliahouse:search';
 
   /* ============================================================
      Search state — one set of dates carried across the whole site
@@ -106,13 +106,13 @@
     const changed = currentRoute !== route.name;
     currentRoute = route.name;
 
-    document.title = (page.title ? page.title(route.params) + ' · ' : '') + 'Casa Marea';
+    document.title = (page.title ? page.title(route.params) + ' · ' : '') + 'Magnolia House';
 
     host.innerHTML = '';
     try {
       page.render(host, route.params);
     } catch (e) {
-      console.error('[Casa Marea] page failed', e);
+      console.error('[Magnolia House] page failed', e);
       host.innerHTML = '<div class="section"><div class="wrap">' +
         Parts.empty({ icon: 'alert', title: 'Something went wrong on this page', text: e.message }) +
         '</div></div>';
@@ -203,7 +203,7 @@
 
     // a booking made in the admin panel in another tab should show up here
     window.addEventListener('storage', function (e) {
-      if (e.key === 'hostops:v1') {
+      if (e.key === 'hostops:v2') {
         try { Store.init(); render(); } catch (err) { /* ignore */ }
       }
     });
@@ -211,7 +211,7 @@
     if (!location.hash) location.hash = '#/';
     render();
 
-    console.info('%cCasa Marea', 'color:#E7623F;font-weight:700;font-size:13px',
+    console.info('%cMagnolia House', 'color:#E7623F;font-weight:700;font-size:13px',
       '· public site ready ·', Store.state.rooms.length, 'rooms ·',
       Store.state.restaurants.length, 'restaurants ·',
       Store.state.experiences.length, 'experiences');

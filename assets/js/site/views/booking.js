@@ -44,7 +44,7 @@
             '<input class="input" id="lkRef" name="ref" placeholder="HO-4820" autocomplete="off">' +
             '<span class="err" data-err-for="ref" hidden></span></div>' +
           '<div class="field"><label for="lkName">Surname</label>' +
-            '<input class="input" id="lkName" name="surname" placeholder="Moretti" autocomplete="family-name">' +
+            '<input class="input" id="lkName" name="surname" placeholder="Beridze" autocomplete="family-name">' +
             '<span class="err" data-err-for="surname" hidden></span></div>' +
         '</div>' +
         '<button class="btn btn--primary btn--lg btn--block" type="submit" style="margin-top:1.2rem">' +

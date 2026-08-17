@@ -241,10 +241,10 @@
                   guests.map(g => ({ value: g.id, label: g.lastName + ', ' + g.firstName + ' (' + g.country + ')' })))
               }) +
               '<div id="newGuestFields" class="formgrid span2" style="grid-column:1/-1' + (model.guestId ? ';display:none' : '') + '">' +
-                UI.field({ label: 'First name', name: 'firstName', placeholder: 'Elena' }) +
-                UI.field({ label: 'Last name', name: 'lastName', placeholder: 'Moretti' }) +
+                UI.field({ label: 'First name', name: 'firstName', placeholder: 'Nino' }) +
+                UI.field({ label: 'Last name', name: 'lastName', placeholder: 'Beridze' }) +
                 UI.field({ label: 'Email', name: 'email', type: 'email', placeholder: 'guest@example.com' }) +
-                UI.field({ label: 'Phone', name: 'phone', placeholder: '+34 600 000 000' }) +
+                UI.field({ label: 'Phone', name: 'phone', placeholder: '+995 555 12 34 56' }) +
               '</div>' +
             '</div>' +
           '</fieldset>' +

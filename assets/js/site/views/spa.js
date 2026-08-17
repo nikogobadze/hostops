@@ -131,7 +131,7 @@
           '</div>' +
           '<div class="formgrid">' +
             '<div class="field span2" style="grid-column:1/-1"><label for="spName">Name</label>' +
-              '<input class="input" id="spName" name="guestName" placeholder="Elena Moretti" value="' + U.esc(p.guestName || '') + '">' +
+              '<input class="input" id="spName" name="guestName" placeholder="Nino Beridze" value="' + U.esc(p.guestName || '') + '">' +
               '<span class="err" data-err-for="guestName" hidden></span></div>' +
             '<div class="field"><label for="spEmail">Email</label>' +
               '<input class="input" type="email" id="spEmail" name="email" placeholder="you@example.com" value="' + U.esc(p.email || '') + '">' +

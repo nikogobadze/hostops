@@ -1,4 +1,4 @@
-# Casa Marea — hotel website + HostOps management panel
+# Magnolia House — hotel website + HostOps management panel
 
 Two front doors onto **one hotel**, sharing one dataset:
 
@@ -23,8 +23,8 @@ Double-click **`site.html`** (guest side) or **`index.html`** (staff side), or s
 npx serve .          # or: python -m http.server 8080
 ```
 
-The first run generates a demo property — *Casa Marea*, a 30-room seafront hotel in Blanes on
-the Costa Brava, with ~800 reservations spanning 45 days back to 75 days forward — built around
+The first run generates a demo property — *Magnolia House*, a 30-room seafront hotel in Blanes on
+the the Black Sea coast, with ~800 reservations spanning 45 days back to 75 days forward — built around
 **today's date**, so the board always opens with real arrivals to check in and departures to
 settle. Everything after that is your data, saved to `localStorage`.
 

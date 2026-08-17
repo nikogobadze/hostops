@@ -10,17 +10,17 @@
   const Pages = global.Pages || (global.Pages = {});
 
   const EXTRAS = {
-    breakfast: { label: 'Breakfast at La Terrassa', note: 'Served 07:00 – 11:00, local pastries and cava', per: 'adult-night', icon: 'coffee' },
-    parking:   { label: 'Valet parking', note: 'Underground, with EV charging', per: 'night', price: 22, icon: 'car' },
-    dog:       { label: 'Bringing a dog', note: 'Bed, bowls and a towel for sandy paws', per: 'stay', price: 25, icon: 'paw' },
-    latecheck: { label: 'Late check-out until 15:00', note: 'Subject to the house being free that day', per: 'stay', price: 40, icon: 'clock' }
+    breakfast: { label: 'Breakfast at Magnolia Terrace', note: 'Served 07:00 – 11:00, nadughi, honey and hot shotis puri', per: 'adult-night', icon: 'coffee' },
+    parking:   { label: 'Valet parking', note: 'Underground, with EV charging', per: 'night', price: 45, icon: 'car' },
+    dog:       { label: 'Bringing a dog', note: 'Bed, bowls and a towel for sandy paws', per: 'stay', price: 70, icon: 'paw' },
+    latecheck: { label: 'Late check-out until 15:00', note: 'Subject to the house being free that day', per: 'stay', price: 90, icon: 'clock' }
   };
 
   const TRANSFERS = [
     { value: '', label: 'No transfer needed', price: 0 },
-    { value: 'bcn', label: 'Barcelona airport (BCN) · 90 min', price: 120 },
-    { value: 'gro', label: 'Girona airport (GRO) · 40 min', price: 75 },
-    { value: 'train', label: 'Blanes railway station · 6 min', price: 15 }
+    { value: 'bus', label: 'Batumi airport (BUS) · 15 min', price: 60 },
+    { value: 'kut', label: 'Kutaisi airport (KUT) · 2 hours', price: 280 },
+    { value: 'train', label: 'Batumi Central station · 10 min', price: 35 }
   ];
 
   Pages.checkout = {
@@ -109,7 +109,7 @@
                         Array.from({ length: Math.max(1, type.capacity) }, (_, i) => i).map(n =>
                           '<option value="' + n + '">' + n + '</option>').join('') +
                       '</select>' +
-                      '<span class="hint">Under sixes eat free at La Terrassa</span></div>' +
+                      '<span class="hint">Under sixes eat free at Magnolia Terrace</span></div>' +
                   '</div>' +
                 '</section>' +
 
@@ -148,10 +148,10 @@
                   '<h2 class="h3" style="margin-bottom:1rem">3 · Who is staying</h2>' +
                   '<form id="coForm" novalidate>' +
                     '<div class="formgrid">' +
-                      UI.field({ label: 'First name', name: 'firstName', placeholder: 'Elena' }) +
-                      UI.field({ label: 'Last name', name: 'lastName', placeholder: 'Moretti' }) +
+                      UI.field({ label: 'First name', name: 'firstName', placeholder: 'Nino' }) +
+                      UI.field({ label: 'Last name', name: 'lastName', placeholder: 'Beridze' }) +
                       UI.field({ label: 'Email', name: 'email', type: 'email', placeholder: 'you@example.com', hint: 'Your confirmation goes here' }) +
-                      UI.field({ label: 'Phone', name: 'phone', placeholder: '+34 600 000 000' }) +
+                      UI.field({ label: 'Phone', name: 'phone', placeholder: '+995 555 12 34 56' }) +
                       UI.field({
                         label: 'Country', name: 'country', type: 'select', value: 'ES',
                         options: Seed.COUNTRIES.map(c => ({ value: c, label: c }))
@@ -424,7 +424,7 @@
                   }));
                 }
               } catch (err) {
-                console.warn('[Casa Marea] could not attach a service', err);
+                console.warn('[Magnolia House] could not attach a service', err);
               }
             });
 
@@ -444,7 +444,7 @@
         }
 
         Site.resetBasket();
-        try { sessionStorage.setItem('casamarea:lastRef', ref); } catch (e) { /* ignore */ }
+        try { sessionStorage.setItem('magnoliahouse:lastRef', ref); } catch (e) { /* ignore */ }
         Site.go('#/confirmation?ref=' + encodeURIComponent(ref));
       }
     }
@@ -681,7 +681,7 @@
 
     render: function (host, params) {
       let ref = params.ref;
-      if (!ref) { try { ref = sessionStorage.getItem('casamarea:lastRef'); } catch (e) { /* ignore */ } }
+      if (!ref) { try { ref = sessionStorage.getItem('magnoliahouse:lastRef'); } catch (e) { /* ignore */ } }
       const booking = ref ? Store.state.bookings.find(b => b.ref === ref) : null;
 
       if (!booking) {

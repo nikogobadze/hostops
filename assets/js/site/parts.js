@@ -1,5 +1,5 @@
 /* ============================================================
-   Casa Marea — shared markup pieces for the public site
+   Magnolia House — shared markup pieces for the public site
    ============================================================ */
 (function (global) {
   'use strict';

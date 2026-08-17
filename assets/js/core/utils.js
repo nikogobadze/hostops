@@ -48,7 +48,10 @@
   U.sum = (arr, fn) => arr.reduce((t, x, i) => t + (fn ? fn(x, i) : x), 0);
   U.round2 = n => Math.round((n + Number.EPSILON) * 100) / 100;
 
-  const CURRENCY_SYMBOL = { EUR: '€', USD: '$', GBP: '£', CHF: 'CHF ', SEK: 'kr ', PLN: 'zł ', TRY: '₺' };
+  const CURRENCY_SYMBOL = {
+    GEL: '₾', EUR: '€', USD: '$', GBP: '£',
+    CHF: 'CHF ', SEK: 'kr ', PLN: 'zł ', TRY: '₺', AMD: '֏', AZN: '₼'
+  };
 
   U.currencySymbol = code => CURRENCY_SYMBOL[code] || (code ? code + ' ' : '');
 

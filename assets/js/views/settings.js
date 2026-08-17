@@ -38,7 +38,7 @@
                   UI.field({ label: 'Check-out by', name: 'checkOutTime', type: 'time', value: h.checkOutTime }) +
                   UI.field({
                     label: 'Currency', name: 'currency', type: 'select', value: h.currency,
-                    options: ['EUR', 'USD', 'GBP', 'CHF', 'SEK', 'PLN', 'TRY'].map(c => ({ value: c, label: c }))
+                    options: ['GEL', 'EUR', 'USD', 'GBP', 'TRY', 'AMD', 'AZN'].map(c => ({ value: c, label: c }))
                   }) +
                   UI.field({ label: 'VAT %', name: 'taxRate', type: 'number', min: 0, max: 30, step: '0.5', value: h.taxRate }) +
                   UI.field({ label: 'City tax per guest / night', name: 'cityTax', type: 'number', min: 0, step: '0.1', value: h.cityTax }) +
@@ -179,7 +179,7 @@
         title: 'Add a team member',
         size: 'sm',
         body: '<form id="stForm"><div class="formgrid">' +
-          UI.field({ label: 'Name', name: 'name', span2: true, required: true, autofocus: true, placeholder: 'Marisol Vega' }) +
+          UI.field({ label: 'Name', name: 'name', span2: true, required: true, autofocus: true, placeholder: 'Marina Bolkvadze' }) +
           UI.field({
             label: 'Role', name: 'role', type: 'select', span2: true, value: 'Housekeeping',
             options: ['Housekeeping', 'Food & Beverage', 'Front Office', 'Maintenance', 'Management']
@@ -264,7 +264,7 @@
         confirmLabel: 'Yes, erase', tone: 'danger'
       });
       if (!sure) return;
-      try { localStorage.removeItem('hostops:v1'); } catch (err) { /* ignore */ }
+      try { localStorage.removeItem('hostops:v2'); } catch (err) { /* ignore */ }
       Store.reset();
       UI.toast('Storage cleared', 'A fresh demo property has been generated.', 'ok');
     });
