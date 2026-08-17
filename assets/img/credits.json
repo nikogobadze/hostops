@@ -1,0 +1,184 @@
+{
+  "hero-rooms": {
+    "title": "Bed in a hotel room",
+    "author": "Markus Spiske",
+    "licence": "CC0",
+    "page": "https://www.rawpixel.com/image/431964/free-photo-image-hotel-bed-bedroom",
+    "provider": "Openverse"
+  },
+  "hero-spa": {
+    "title": "Sauna of the spa at Amantaka luxury Resort & Hotel in Luang Prabang Laos",
+    "author": "Basile Morin",
+    "licence": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sauna_of_the_spa_at_Amantaka_luxury_Resort_%26_Hotel_in_Luang_Prabang_Laos.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "hero-hotel": {
+    "title": "Batumi Boulevard Alley",
+    "author": "Sosotedrd",
+    "licence": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Batumi_Boulevard_Alley.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "story": {
+    "title": "Changing skyline of Batumi, Georgia",
+    "author": "jagermesh",
+    "licence": "CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Changing_skyline_of_Batumi,_Georgia.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "beach": {
+    "title": "Batumi. Black Sea",
+    "author": "Sergey Sebelev",
+    "licence": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Batumi._Black_Sea.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "pool": {
+    "title": "Tenom Sabah Outdoor-Swimming-Pool-01",
+    "author": "CEphoto, Uwe Aranas",
+    "licence": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Tenom_Sabah_Outdoor-Swimming-Pool-01.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "room-twin": {
+    "title": "Deluxe Room - Twin beds",
+    "author": "Holidayinnklg",
+    "licence": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Deluxe_Room_-_Twin_beds.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "room-deluxe": {
+    "title": "Bedroom decor interior",
+    "author": "Unknown",
+    "licence": "CC0",
+    "page": "https://www.rawpixel.com/image/6036396/photo-image-public-domain-wood-house",
+    "provider": "Openverse"
+  },
+  "room-family": {
+    "title": "Room in the Copley Plaza Hotel, Boston, May 1975 02",
+    "author": "Per source. Please credit \"Family photos of Infrogmation\"",
+    "licence": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Room_in_the_Copley_Plaza_Hotel,_Boston,_May_1975_02.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "room-penthouse": {
+    "title": "Terrace Plaza Hotel, E 6th St & Vine St, Cincinnati, OH, upper view",
+    "author": "Warren LeMay",
+    "licence": "CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Terrace_Plaza_Hotel,_E_6th_St_%26_Vine_St,_Cincinnati,_OH,_upper_view.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "dining-fine": {
+    "title": "Seafood Dish Plate",
+    "author": "Unknown",
+    "licence": "CC0",
+    "page": "https://www.rawpixel.com/image/5966551/seafood-dish-plate",
+    "provider": "Openverse"
+  },
+  "dining-rooftop": {
+    "title": "Free two cocktails bar counter",
+    "author": "Unknown",
+    "licence": "CC0",
+    "page": "https://www.rawpixel.com/image/5926622/photo-image-public-domain-person-red",
+    "provider": "Openverse"
+  },
+  "sail": {
+    "title": "Free sailboat beautiful sunset image",
+    "author": "Unknown",
+    "licence": "CC0",
+    "page": "https://www.rawpixel.com/image/5923745/photo-image-background-public-domain-ocean",
+    "provider": "Openverse"
+  },
+  "wine": {
+    "title": "A terracotta Kvevri used to ferment and age wine decorated with depictions of bunches of grapes, First half of the 6th millennium BC, from Khramis Didid Gora, National Museum of Georgia, Tbilisi, Georgia",
+    "author": "Carole Raddato",
+    "licence": "CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:A_terracotta_Kvevri_used_to_ferment_and_age_wine_decorated_with_depictions_of_bunches_of_grapes,_First_half_of_the_6th_millennium_BC,_from_Khramis_Didid_Gora,_National_Museum_of_Georgia,_Tbilisi,_Georgia.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "cook": {
+    "title": "2019-07-17 Khachapuri (Adjaruli) served at Georgian Restaurant in Kyiv",
+    "author": "Maksym Kozlenko",
+    "licence": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:2019-07-17_Khachapuri_(Adjaruli)_served_at_Georgian_Restaurant_in_Kyiv.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "snorkel": {
+    "title": "Makhuntseti Waterfall - მახუნცეთის ჩანჩქერი - panoramio",
+    "author": "Wojciech Biegun",
+    "licence": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Makhuntseti_Waterfall_-_%E1%83%9B%E1%83%90%E1%83%AE%E1%83%A3%E1%83%9C%E1%83%AA%E1%83%94%E1%83%97%E1%83%98%E1%83%A1_%E1%83%A9%E1%83%90%E1%83%9C%E1%83%A9%E1%83%A5%E1%83%94%E1%83%A0%E1%83%98_-_panoramio.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "hike": {
+    "title": "Batumi Botanical Garden (10)",
+    "author": "This work is created by George Mel. You can redistribute it or modify it under the terms o",
+    "licence": "GPL",
+    "page": "https://commons.wikimedia.org/wiki/File:Batumi_Botanical_Garden_(10).jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "hero": {
+    "title": "Batumi seaside park",
+    "author": "Gorod - SKY",
+    "licence": "CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Batumi_seaside_park.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "hero-dining": {
+    "title": "The Bayview Restaurant, Guantanamo",
+    "author": "Unknown authorUnknown author",
+    "licence": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:The_Bayview_Restaurant,_Guantanamo.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "spa": {
+    "title": "Lounge at the Spa at Silver Legacy - 2021-11-14 - Sarah Stierch 01",
+    "author": "Missvain",
+    "licence": "CC BY 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lounge_at_the_Spa_at_Silver_Legacy_-_2021-11-14_-_Sarah_Stierch_01.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "hero-exp": {
+    "title": "Sailing Boat",
+    "author": "Matt Bango",
+    "licence": "CC0",
+    "page": "https://stocksnap.io/photo/sailing-boat-LVDUNW8RWS",
+    "provider": "Openverse"
+  },
+  "hero-contact": {
+    "title": "Batumi, Georgia (23)",
+    "author": "Carole Raddato",
+    "licence": "CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Batumi,_Georgia_(23).jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "room-standard": {
+    "title": "Free bedroom image",
+    "author": "Unknown",
+    "licence": "CC0",
+    "page": "https://www.rawpixel.com/image/5922673/photo-image-public-domain-room-interior",
+    "provider": "Openverse"
+  },
+  "room-junior": {
+    "title": "Pattern sofa living room",
+    "author": "Unknown",
+    "licence": "CC0",
+    "page": "https://www.rawpixel.com/image/5917402/image-public-domain-pattern-statues",
+    "provider": "Openverse"
+  },
+  "dining-terrace": {
+    "title": "Outdoor terrace of hotel Grand Marina on a sunny afternoon in May 2025",
+    "author": "JIP",
+    "licence": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Outdoor_terrace_of_hotel_Grand_Marina_on_a_sunny_afternoon_in_May_2025.jpg",
+    "provider": "Wikimedia Commons"
+  },
+  "market": {
+    "title": "Pharnavaz street, Batumi, Georgia",
+    "author": "Przemysław Wollenszleger",
+    "licence": "CC BY-SA 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pharnavaz_street,_Batumi,_Georgia.jpg",
+    "provider": "Wikimedia Commons"
+  }
+}

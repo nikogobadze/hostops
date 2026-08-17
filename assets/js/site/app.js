@@ -75,7 +75,7 @@
      Routing
      ============================================================ */
 
-  const ROUTES = ['home', 'rooms', 'dining', 'spa', 'experiences', 'hotel', 'contact', 'checkout', 'booking', 'confirmation'];
+  const ROUTES = ['home', 'rooms', 'dining', 'spa', 'experiences', 'hotel', 'contact', 'checkout', 'booking', 'confirmation', 'credits'];
 
   function parseHash() {
     const raw = (location.hash || '#/').replace(/^#\/?/, '');

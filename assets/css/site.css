@@ -18,11 +18,11 @@
 :root {
   color-scheme: light;
 
-  /* ---- ground: warm, paper-like ---- */
-  --bone:      #FAF7F1;
-  --bone-deep: #F2ECE2;
-  --ivory:     #FFFDFA;
-  --linen:     #EDE5D8;
+  /* ---- ground: light beige, warm and paper-like ---- */
+  --bone:      #F7F1E5;   /* the page */
+  --bone-deep: #EFE7D6;   /* alternating bands */
+  --ivory:     #FDFAF3;   /* panels and cards sitting on the page */
+  --linen:     #E7DCC6;   /* image placeholder before a photo loads */
 
   /* ---- ink ---- */
   --ink:       #17130E;
@@ -33,11 +33,16 @@
   --line:      #E2DACD;
   --line-fine: #EFE9DE;
 
-  /* ---- the single accent ---- */
-  --bronze:      #A85C36;
-  --bronze-deep: #8C4A29;
-  --bronze-pale: #C98A63;
-  --bronze-wash: #F6EDE6;
+  /* ---- the single accent: a warm red ----
+         Vermilion rather than pillarbox. Pure red on a warm ground
+         vibrates and tires the eye; pulling it toward brick keeps the
+         brightness while staying comfortable to look at.
+         --bronze-* names are kept so nothing downstream has to change. */
+  --bronze:      #C13A22;   /* fills, rules, icons */
+  --bronze-deep: #9C2B15;   /* hover */
+  --bronze-pale: #E8A08C;   /* on dark grounds */
+  --bronze-wash: #F7E9E3;
+  --red-text:    #A93217;   /* small type — clears 4.5:1 on the beige */
 
   /* ---- sea, used sparingly for information ---- */
   --sea:      #2E6B7A;
@@ -52,11 +57,34 @@
   --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 
-  /* ---- shape: nearly square. roundness reads casual ---- */
-  --r-xs: 2px;
-  --r: 3px;
-  --r-lg: 4px;
+  /* ---- shape: softened. enough curve to feel warm, not enough
+         to read playful. Images carry the largest radius because
+         a hard photographic edge is what makes a page feel sharp ---- */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
   --r-pill: 999px;
+
+  /* ---- spacing: one scale, used everywhere ----
+         Roughly a 1.4 ratio, so steps are distinguishable without
+         any two ever looking like a mistake. Every gap in the page
+         is one of these; nothing is hand-picked. */
+  --s-1: 0.5rem;
+  --s-2: 0.875rem;
+  --s-3: 1.25rem;
+  --s-4: 1.75rem;
+  --s-5: 2.5rem;
+  --s-6: 3.5rem;
+  --s-7: 5rem;
+  --s-8: 7rem;
+
+  /* vertical rhythm between major bands, and the gutter inside them */
+  --band: clamp(4.5rem, 9vw, 9rem);
+  --gutter: clamp(1.5rem, 4vw, 3.5rem);
+  /* distance from the viewport edge — never less than a thumb’s width */
+  --pad: clamp(1.75rem, 5vw, 4.5rem);
 
   --shadow-xs: 0 1px 2px rgba(23,19,14,.04);
   --shadow: 0 2px 20px -6px rgba(23,19,14,.10);
@@ -119,11 +147,12 @@ img, svg { display: block; max-width: 100%; }
 /* the micro-label that sets the register on these sites */
 .eyebrow {
   display: block;
-  font-size: .68rem;
-  font-weight: 500;
-  letter-spacing: .34em;
+  font-size: .69rem;
+  font-weight: 560;
+  letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--bronze);
+  /* the darker step: .69rem uppercase is small type and needs the contrast */
+  color: var(--red-text);
 }
 .eyebrow--light { color: rgba(255,255,255,.78); }
 .eyebrow--stone { color: var(--stone); }
@@ -165,28 +194,37 @@ img, svg { display: block; max-width: 100%; }
    Layout — air is the material
    ============================================================ */
 
-.wrap { width: min(1320px, 100% - 3rem); margin-inline: auto; }
-.wrap--narrow { width: min(720px, 100% - 3rem); }
-.wrap--wide { width: min(1560px, 100% - 2rem); }
+/* One gutter token, used by every container and the top bar, so
+   nothing ever sits closer to the edge than anything else. */
+.wrap {
+  width: 100%; max-width: calc(1320px + var(--pad) * 2);
+  margin-inline: auto; padding-inline: var(--pad);
+}
+.wrap--narrow { max-width: calc(720px + var(--pad) * 2); }
+.wrap--wide { max-width: calc(1560px + var(--pad) * 2); }
 .measure { max-width: 62ch; }
 .measure--centre { max-width: 60ch; margin-inline: auto; text-align: center; }
 
-.section { padding: clamp(4.5rem, 11vw, 10rem) 0; }
-.section--tight { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.section { padding: var(--band) 0; }
+.section--tight { padding: calc(var(--band) * .45) 0; }
 .section--bone { background: var(--bone-deep); }
 .section--ivory { background: var(--ivory); }
 .section--ink { background: var(--ink); color: var(--bone); }
 .section--ink .lede, .section--ink .muted { color: rgba(250,247,241,.66); }
 .section--ink .eyebrow { color: var(--bronze-pale); }
 
-.section__head { margin-bottom: clamp(2.4rem, 5vw, 4rem); }
-.section__head .eyebrow { margin-bottom: 1.4rem; }
-.section__head .lede { margin-top: 1.2rem; }
-.section__head--centre { text-align: center; margin-inline: auto; max-width: 62ch; }
+.section__head { margin-bottom: var(--s-6); }
+.section__head .eyebrow { margin-bottom: var(--s-3); }
+.section__head .lede { margin-top: var(--s-3); }
+/* rem, not ch: this element is 16px while the heading inside it is
+   ~57px, so a ch cap wraps a centred headline after three words.
+   The lede beneath keeps its own, narrower measure. */
+.section__head--centre { text-align: center; margin-inline: auto; max-width: min(54rem, 92vw); }
+.section__head--centre .lede { max-width: 46rem; margin-inline: auto; }
 
-.grid { display: grid; gap: clamp(1.4rem, 2.6vw, 2.4rem); }
+.grid { display: grid; gap: var(--gutter); }
 .grid--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-.grid--3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid--3 { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
 .grid--4 { grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); }
 
 .row { display: flex; align-items: center; gap: 1rem; }
@@ -213,7 +251,7 @@ img, svg { display: block; max-width: 100%; }
   min-height: 50px;
   padding: 0 1.9rem;
   border: 1px solid var(--bd);
-  border-radius: var(--r);
+  border-radius: var(--r-pill);
   background: var(--bg);
   color: var(--fg);
   font-size: .72rem;
@@ -249,6 +287,7 @@ img, svg { display: block; max-width: 100%; }
 .btn--primary:hover { color: #fff; border-color: var(--bronze); }
 
 .btn--bronze { --bg: var(--bronze); --fg: #fff; --bd: var(--bronze); }
+.card__badge--bronze { background: var(--bronze); color: #fff; }
 .btn--bronze::before { background: var(--bronze-deep); }
 .btn--bronze:hover { color: #fff; border-color: var(--bronze-deep); }
 
@@ -291,7 +330,7 @@ img, svg { display: block; max-width: 100%; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 60;
   height: var(--nav-h);
   display: flex; align-items: center; gap: 2.4rem;
-  padding-inline: clamp(1.2rem, 3.4vw, 3rem);
+  padding-inline: var(--pad);
   transition: background .5s var(--ease), border-color .5s, height .4s var(--ease);
   border-bottom: 1px solid transparent;
 }
@@ -306,6 +345,12 @@ img, svg { display: block; max-width: 100%; }
 .topbar.is-over-hero .mainnav a { color: rgba(255,255,255,.86); }
 .topbar.is-over-hero .mainnav a:hover, .topbar.is-over-hero .mainnav a.is-active { color: #fff; }
 .topbar.is-over-hero .navtoggle { color: #fff; border-color: rgba(255,255,255,.4); }
+/* the ghost button defaults to stone, which vanishes on a photograph */
+.topbar.is-over-hero .btn--ghost { --fg: rgba(255,255,255,.88); }
+.topbar.is-over-hero .btn--ghost:hover { --fg: #fff; }
+.topbar.is-over-hero .btn--primary { --bg: #fff; --fg: var(--ink); --bd: #fff; }
+.topbar.is-over-hero .btn--primary::before { background: var(--bronze); }
+.topbar.is-over-hero .btn--primary:hover { color: #fff; border-color: var(--bronze); }
 
 .brand { display: flex; flex-direction: column; line-height: 1; flex: none; }
 .brand strong {
@@ -340,14 +385,14 @@ img, svg { display: block; max-width: 100%; }
   display: none;
   width: 46px; height: 46px;
   align-items: center; justify-content: center;
-  border: 1px solid var(--line); border-radius: var(--r);
+  border: 1px solid var(--line); border-radius: var(--r-pill);
   background: transparent; cursor: pointer; font-size: 1.1rem;
 }
 
 .mobilenav {
   position: fixed; inset: 0; z-index: 55;
   background: var(--bone);
-  padding: calc(var(--nav-h) + 1.5rem) clamp(1.4rem, 6vw, 3rem) 3rem;
+  padding: calc(var(--nav-h) + var(--s-5)) var(--pad) var(--s-6);
   overflow-y: auto;
   display: none; flex-direction: column;
 }
@@ -371,14 +416,28 @@ img, svg { display: block; max-width: 100%; }
   color: #fff;
 }
 .hero__art { position: absolute; inset: 0; }
-.hero__art svg { width: 100%; height: 100%; }
+.hero__art .art { width: 100%; height: 100%; }
+/* A photograph busy enough to be interesting is busy enough to fight
+   the headline. Heroes get a second, directional wash — heavier at the
+   left where the type sits and along the top behind the nav — on top of
+   the even scrim the image already carries. */
+.hero__art::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(100deg, rgba(20,15,10,.72) 0%, rgba(20,15,10,.46) 38%, rgba(20,15,10,.06) 72%),
+    linear-gradient(to bottom, rgba(20,15,10,.42) 0%, rgba(20,15,10,0) 22%);
+  pointer-events: none;
+}
+/* the nav sits over the same wash, so it needs no plate of its own */
+.hero .display, .hero .lede { text-shadow: 0 1px 40px rgba(20,15,10,.35); }
 /* a slow drift so the still image is never quite static */
 @media (prefers-reduced-motion: no-preference) {
-  .hero__art svg { animation: drift 32s var(--ease) infinite alternate; }
+  .hero__art .art { animation: drift 32s var(--ease) infinite alternate; }
 }
 @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.11); } }
 
-.hero__inner { position: relative; width: 100%; padding-bottom: clamp(3rem, 8vw, 7rem); }
+.hero__inner { position: relative; z-index: 2; width: 100%; padding-bottom: clamp(3rem, 8vw, 7rem); }
 .hero .display { max-width: 15ch; white-space: pre-line; }
 .hero .lede { color: rgba(255,255,255,.88); max-width: 44ch; margin-top: 1.6rem; }
 .hero .eyebrow { margin-bottom: 1.8rem; }
@@ -397,7 +456,7 @@ img, svg { display: block; max-width: 100%; }
 @keyframes riseIn { from { opacity: 0; transform: translateY(26px); } }
 
 .scrollcue {
-  position: absolute; left: 50%; bottom: 2rem; transform: translateX(-50%);
+  position: absolute; z-index: 2; left: 50%; bottom: 2rem; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: .8rem;
   font-size: .58rem; letter-spacing: .34em; text-transform: uppercase;
   color: rgba(255,255,255,.66);
@@ -422,13 +481,14 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--line);
   border-radius: var(--r);
   box-shadow: var(--shadow-lg);
+  overflow: hidden;
 }
 .searchbar--hero { margin-top: clamp(2.4rem, 5vw, 3.6rem); max-width: 900px; }
 .searchbar--inline { box-shadow: none; background: var(--ivory); }
 
 .searchbar__field {
   display: flex; flex-direction: column; justify-content: center;
-  padding: 1.05rem 1.5rem;
+  padding: var(--s-3) var(--s-4);
   position: relative;
   min-width: 0;
   transition: background .35s var(--ease);
@@ -468,24 +528,50 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 540px) { .searchbar { grid-template-columns: 1fr; } }
 
 /* ============================================================
+   Artwork — a photograph or a generated scene, interchangeably
+   ============================================================ */
+
+.art { display: block; width: 100%; height: 100%; }
+
+.art--photo { position: relative; overflow: hidden; background: var(--linen); }
+.art--photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* the SVG scenes bake their scrim in; photographs need one applied,
+   weighted to the foot where type usually sits */
+.art--photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(23,19,14,calc(var(--scrim, .34) * .55)) 0%,
+      rgba(23,19,14,0) 34%,
+      rgba(23,19,14,0) 58%,
+      rgba(23,19,14,var(--scrim, .34)) 100%);
+  pointer-events: none;
+}
+
+/* ============================================================
    Editorial — the core rhythm
    ============================================================ */
 
 .editorial {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 6vw, 6rem);
+  gap: var(--gutter);
   align-items: center;
 }
 .editorial--reverse .editorial__art { order: 2; }
-.editorial__art { position: relative; overflow: hidden; aspect-ratio: 4 / 5; }
-.editorial__art svg { width: 100%; height: 100%; transition: transform 1.6s var(--slow); }
-.editorial:hover .editorial__art svg { transform: scale(1.05); }
+.editorial__art { position: relative; overflow: hidden; aspect-ratio: 4 / 5; border-radius: var(--r-lg); }
+.editorial__art .art { width: 100%; height: 100%; transition: transform 1.6s var(--slow); }
+.editorial:hover .editorial__art .art { transform: scale(1.05); }
 .editorial__body { max-width: 46ch; }
-.editorial__body .eyebrow { margin-bottom: 1.3rem; }
-.editorial__body .h1 { margin-bottom: 1.4rem; }
-.editorial__body .textlink { margin-top: 1.8rem; }
-.editorial + .editorial { margin-top: clamp(4rem, 9vw, 8rem); }
+.editorial__body .eyebrow { margin-bottom: var(--s-3); }
+.editorial__body .h1 { margin-bottom: var(--s-4); }
+.editorial__body .textlink { margin-top: var(--s-5); }
+.editorial + .editorial { margin-top: var(--band); }
 @media (max-width: 860px) {
   .editorial { grid-template-columns: 1fr; }
   .editorial--reverse .editorial__art { order: 0; }
@@ -501,7 +587,7 @@ img, svg { display: block; max-width: 100%; }
   color: #fff; text-align: center;
 }
 .plate__art { position: absolute; inset: 0; }
-.plate__art svg { width: 100%; height: 100%; }
+.plate__art .art { width: 100%; height: 100%; }
 /* a centre-weighted wash: the scrim baked into the artwork darkens the
    foot, which does nothing for type sitting in the middle of the plate */
 .plate::after {
@@ -510,7 +596,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .plate__body {
   position: relative; z-index: 1;
-  padding: 2rem;
+  padding: var(--s-5) var(--pad);
   /* NOT ch — this element is 16px while the statement inside is ~40px,
      so a ch-based cap wraps the headline after a couple of words */
   max-width: min(46rem, 88vw);
@@ -531,15 +617,17 @@ img, svg { display: block; max-width: 100%; }
   position: relative; overflow: hidden;
   aspect-ratio: 4 / 5;
   background: var(--linen);
-  margin-bottom: 1.5rem;
+  border-radius: var(--r-lg);
+  margin-bottom: var(--s-4);
 }
-.card__media svg { width: 100%; height: 100%; transition: transform 1.6s var(--slow); }
+.card__media .art { width: 100%; height: 100%; transition: transform 1.6s var(--slow); }
 .card--hover { cursor: pointer; }
-.card--hover:hover .card__media svg { transform: scale(1.06); }
+.card--hover:hover .card__media .art { transform: scale(1.06); }
 .card__media--wide { aspect-ratio: 3 / 2; }
 
 .card__badge {
-  position: absolute; top: 1.1rem; left: 1.1rem;
+  position: absolute; top: var(--s-3); left: var(--s-3);
+  border-radius: var(--r-pill);
   background: rgba(255,253,250,.94);
   color: var(--ink);
   padding: .38rem .85rem;
@@ -548,14 +636,14 @@ img, svg { display: block; max-width: 100%; }
   backdrop-filter: blur(4px);
 }
 .card__badge--bronze { background: var(--bronze); color: #fff; }
-.card__badge--right { left: auto; right: 1.1rem; }
+.card__badge--right { left: auto; right: var(--s-3); }
 
-.card__body { display: flex; flex-direction: column; gap: .75rem; flex: 1; }
-.card__body > .row:last-child { margin-top: auto; padding-top: .9rem; }
+.card__body { display: flex; flex-direction: column; gap: var(--s-2); flex: 1; }
+.card__body > .row:last-child { margin-top: auto; padding-top: var(--s-3); }
 .card__body .eyebrow { margin-bottom: -.2rem; }
 
 .card__meta {
-  display: flex; flex-wrap: wrap; gap: .3rem 1.3rem;
+  display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4);
   font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; color: var(--stone);
 }
 .card__meta span { display: inline-flex; align-items: center; gap: .45rem; }
@@ -570,19 +658,19 @@ img, svg { display: block; max-width: 100%; }
 .roomrow {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(1.6rem, 4vw, 4rem);
+  gap: var(--gutter);
   align-items: center;
-  padding-bottom: clamp(2.4rem, 5vw, 4rem);
+  padding-bottom: var(--s-6);
   border-bottom: 1px solid var(--line);
 }
 .roomrow:nth-child(even) .roomrow__art { order: 2; }
-.roomrow__art { position: relative; overflow: hidden; aspect-ratio: 3 / 2; }
-.roomrow__art svg { width: 100%; height: 100%; transition: transform 1.6s var(--slow); }
-.roomrow:hover .roomrow__art svg { transform: scale(1.05); }
-.roomrow__body { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.roomrow__art { position: relative; overflow: hidden; aspect-ratio: 3 / 2; border-radius: var(--r-lg); }
+.roomrow__art .art { width: 100%; height: 100%; transition: transform 1.6s var(--slow); }
+.roomrow:hover .roomrow__art .art { transform: scale(1.05); }
+.roomrow__body { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
 .roomrow__buy {
   display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.4rem;
-  padding-top: 1.3rem; border-top: 1px solid var(--line-fine);
+  padding-top: var(--s-4); border-top: 1px solid var(--line-fine);
 }
 .roomrow__buy .btn { margin-left: auto; }
 @media (max-width: 860px) {
@@ -604,7 +692,7 @@ img, svg { display: block; max-width: 100%; }
 .tag--bronze { color: var(--bronze); }
 /* inside dense UI the tags need a chip form */
 .taglist--chips .tag {
-  padding: .34rem .8rem; border: 1px solid var(--line); border-radius: var(--r);
+  padding: .42rem 1rem; border: 1px solid var(--line); border-radius: var(--r-pill);
 }
 
 /* ============================================================
@@ -612,11 +700,11 @@ img, svg { display: block; max-width: 100%; }
    ============================================================ */
 
 .filters {
-  display: flex; flex-wrap: wrap; gap: 1.6rem; align-items: center;
-  padding: 1.6rem 0;
+  display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center;
+  padding: var(--s-4) 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  margin-bottom: clamp(2.4rem, 5vw, 4rem);
+  margin-bottom: var(--s-6);
 }
 .chip {
   border: 0; background: none; cursor: pointer; padding: .3rem 0;
@@ -652,8 +740,8 @@ img, svg { display: block; max-width: 100%; }
    ============================================================ */
 
 .amenity {
-  display: flex; gap: 1.1rem; align-items: flex-start;
-  padding: 1.4rem 0;
+  display: flex; gap: var(--s-3); align-items: flex-start;
+  padding: var(--s-4) 0;
   border-top: 1px solid var(--line-fine);
 }
 .amenity [data-icon] { flex: none; color: var(--bronze); margin-top: .18rem; }
@@ -661,7 +749,7 @@ img, svg { display: block; max-width: 100%; }
 .amenity strong { display: block; font-size: .93rem; font-weight: 560; margin-bottom: .2rem; }
 .amenity span { font-size: .85rem; color: var(--stone); line-height: 1.6; }
 
-.statrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2.4rem; }
+.statrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--s-6); }
 .stat__v {
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(2.4rem, 4.6vw, 3.6rem); line-height: 1;
@@ -675,7 +763,7 @@ img, svg { display: block; max-width: 100%; }
    Quotes
    ============================================================ */
 
-.quote { display: flex; flex-direction: column; gap: 1.4rem; }
+.quote { display: flex; flex-direction: column; gap: var(--s-4); }
 .quote blockquote {
   font-family: var(--serif); font-size: 1.16rem; line-height: 1.56; font-weight: 400;
   color: var(--ink-soft);
@@ -689,6 +777,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 560; margin-bottom: .35rem;
 }
 .stars { display: flex; gap: .3rem; color: var(--bronze); }
+.rule--short { background: var(--bronze); }
 .stars [data-icon] > svg { width: 12px; height: 12px; fill: currentColor; }
 
 /* ============================================================
@@ -699,7 +788,7 @@ img, svg { display: block; max-width: 100%; }
 .acc__item { border-bottom: 1px solid var(--line); }
 .acc__q {
   width: 100%; text-align: left; background: none; border: 0; cursor: pointer;
-  padding: 1.7rem 3rem 1.7rem 0;
+  padding: var(--s-5) var(--s-6) var(--s-5) 0;
   font-family: var(--serif); font-size: 1.16rem; font-weight: 400; color: var(--ink);
   position: relative;
 }
@@ -710,7 +799,7 @@ img, svg { display: block; max-width: 100%; }
 .acc__q::before { width: 15px; height: 1px; margin-top: -.5px; }
 .acc__q::after { width: 1px; height: 15px; margin-top: -7.5px; right: 7.3px; }
 .acc__item.is-open .acc__q::after { transform: rotate(90deg); opacity: 0; }
-.acc__a { display: none; padding: 0 3rem 1.9rem 0; color: var(--ink-soft); max-width: 62ch; }
+.acc__a { display: none; padding: 0 var(--s-6) var(--s-5) 0; color: var(--ink-soft); max-width: 62ch; }
 .acc__item.is-open .acc__a { display: block; animation: fadeUp .5s var(--ease); }
 
 /* ============================================================
@@ -720,14 +809,15 @@ img, svg { display: block; max-width: 100%; }
 .panel {
   background: var(--ivory);
   border: 1px solid var(--line);
-  padding: clamp(1.5rem, 3vw, 2.2rem);
+  border-radius: var(--r);
+  padding: clamp(1.7rem, 3vw, 2.5rem);
 }
 .panel--sticky { position: sticky; top: calc(var(--nav-h) + 1.4rem); }
 .panel--plain { background: transparent; border: 0; padding: 0; }
 
 .linerow {
-  display: flex; justify-content: space-between; gap: 1.4rem;
-  padding: .58rem 0; font-size: .9rem;
+  display: flex; justify-content: space-between; gap: var(--s-4);
+  padding: var(--s-1) 0; font-size: .9rem;
 }
 .linerow span { color: var(--stone); }
 .linerow b { font-weight: 500; font-variant-numeric: tabular-nums; }
@@ -739,8 +829,8 @@ img, svg { display: block; max-width: 100%; }
 .linerow--total b { font-family: var(--serif); font-size: 1.7rem; font-weight: 400; }
 
 .steps {
-  display: flex; gap: 1.4rem; align-items: center; flex-wrap: wrap;
-  margin-bottom: 2.6rem;
+  display: flex; gap: var(--s-4); align-items: center; flex-wrap: wrap;
+  margin-bottom: var(--s-6);
   font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
 }
 .steps__i { display: inline-flex; align-items: center; gap: .7rem; color: var(--stone-mid); }
@@ -757,8 +847,8 @@ img, svg { display: block; max-width: 100%; }
 
 .slots { display: flex; flex-wrap: wrap; gap: .6rem; }
 .slot {
-  min-width: 82px; padding: .7rem .8rem;
-  border: 1px solid var(--line); border-radius: var(--r);
+  min-width: 84px; padding: var(--s-2) var(--s-3);
+  border: 1px solid var(--line); border-radius: var(--r-sm);
   background: var(--ivory);
   font-size: .84rem; font-weight: 460; cursor: pointer; text-align: center;
   font-variant-numeric: tabular-nums;
@@ -773,7 +863,7 @@ img, svg { display: block; max-width: 100%; }
 .slot.is-on small { color: rgba(250,247,241,.6); }
 .slot:disabled { opacity: .3; cursor: not-allowed; text-decoration: line-through; }
 
-.field { display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.field { display: flex; flex-direction: column; gap: var(--s-1); min-width: 0; }
 .field > label {
   font-size: .6rem; font-weight: 560; letter-spacing: .22em;
   text-transform: uppercase; color: var(--stone);
@@ -799,7 +889,7 @@ img, svg { display: block; max-width: 100%; }
   background-repeat: no-repeat; background-position: right center;
 }
 
-.formgrid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.6rem 2rem; }
+.formgrid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--s-4) var(--s-5); }
 .formgrid .span2 { grid-column: 1 / -1; }
 @media (max-width: 560px) { .formgrid { grid-template-columns: 1fr; } }
 
@@ -807,8 +897,8 @@ img, svg { display: block; max-width: 100%; }
 .check input { width: 17px; height: 17px; margin: 3px 0 0; accent-color: var(--bronze); flex: none; }
 
 .optioncard {
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1.2rem 0;
+  display: flex; align-items: flex-start; gap: var(--s-3);
+  padding: var(--s-4) 0;
   border-bottom: 1px solid var(--line-fine);
   cursor: pointer;
   transition: opacity .3s;
@@ -842,7 +932,7 @@ img, svg { display: block; max-width: 100%; }
 .modal {
   width: 100%; max-width: 620px;
   background: var(--bone);
-  border-radius: var(--r);
+  border-radius: var(--r-lg);
   box-shadow: var(--shadow-lg);
   animation: modalIn .55s var(--slow);
   margin: auto 0; overflow: hidden;
@@ -866,7 +956,7 @@ img, svg { display: block; max-width: 100%; }
 .iconbtn {
   width: 40px; height: 40px; flex: none;
   display: grid; place-items: center;
-  border: 1px solid transparent; border-radius: var(--r);
+  border: 1px solid transparent; border-radius: var(--r-pill);
   background: transparent; color: var(--stone);
   cursor: pointer; transition: color .3s, border-color .3s;
 }
@@ -906,8 +996,9 @@ img, svg { display: block; max-width: 100%; }
    ============================================================ */
 
 .notice {
-  display: flex; gap: 1rem; align-items: flex-start;
-  padding: 1.2rem 1.4rem;
+  display: flex; gap: var(--s-3); align-items: flex-start;
+  padding: var(--s-4);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
   background: var(--bone-deep);
   border-left: 2px solid var(--stone-pale);
   font-size: .9rem; color: var(--ink-soft); line-height: 1.62;
@@ -935,7 +1026,7 @@ img, svg { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .hero__inner > .wrap > * { animation: none; }
-  .hero__art svg { animation: none; }
+  .hero__art .art { animation: none; }
 }
 
 /* ============================================================
@@ -977,7 +1068,7 @@ img, svg { display: block; max-width: 100%; }
 @media (max-width: 620px) {
   body { font-size: 15.5px; }
   .section { padding: 3.4rem 0; }
-  .wrap, .wrap--narrow { width: calc(100% - 2.2rem); }
+
   .hero { min-height: 92svh; }
 }
 

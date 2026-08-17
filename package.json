@@ -15,7 +15,8 @@
     "db:reset": "node scripts/migrate.mjs --drop && node scripts/seed.mjs"
   },
   "dependencies": {
-    "@libsql/client": "^0.15.15"
+    "@libsql/client": "^0.15.15",
+    "sharp": "^0.35.3"
   },
   "license": "UNLICENSED"
 }

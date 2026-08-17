@@ -238,6 +238,7 @@
         '<div class="footer__base">' +
           '<span>&copy; ' + new Date().getFullYear() + ' ' + U.esc(h.name) + '</span>' +
           '<span>All rates include VAT</span>' +
+          '<a href="#/credits">Image credits</a>' +
           '<span class="spacer"></span>' +
           '<a href="index.html" title="Staff only">Staff sign in</a>' +
         '</div>' +

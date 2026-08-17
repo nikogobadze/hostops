@@ -254,12 +254,39 @@
 
   /* ---------------- renderer ---------------- */
 
+  /* ============================================================
+     Photography
+
+     Real photographs where we have one, the generated scene where
+     we do not. Both fill their container identically, so a slot can
+     gain or lose a photo without touching a single call site.
+     ============================================================ */
+
+  const hasPhoto = key => Array.isArray(global.PHOTOS) && global.PHOTOS.indexOf(key) > -1;
+
+  /** Slots that appear above the fold and must not be lazy-loaded. */
+  const EAGER = ['hero', 'hero-rooms', 'hero-dining', 'hero-spa', 'hero-exp', 'hero-hotel', 'hero-contact'];
+
+  function photo(key, o) {
+    const scrim = o.scrim === undefined ? 0.34 : o.scrim;
+    const eager = EAGER.indexOf(key) > -1;
+    return '<span class="art art--photo" style="--scrim:' + scrim + '">' +
+      '<img src="assets/img/' + key + '.jpg" alt="' + U.esc(o.alt || '') + '"' +
+      (eager ? ' fetchpriority="high"' : ' loading="lazy"') +
+      ' decoding="async">' +
+      '</span>';
+  }
+
   /**
-   * Art.scene('room-deluxe') → an <svg> string that fills its container.
-   * Ids are namespaced per call so many scenes can share one document.
+   * Art.scene('room-deluxe') → markup that fills its container:
+   * a photograph if one exists for the slot, otherwise a generated
+   * SVG scene. Ids are namespaced per call so many scenes can share
+   * one document.
    */
   Art.scene = function (key, opts) {
     const o = opts || {};
+    if (hasPhoto(key)) return photo(key, o);
+
     const def = SCENES[key] || SCENES.hero;
     const pal = P[def.p] || P.azure;
     const n = ++seq;
